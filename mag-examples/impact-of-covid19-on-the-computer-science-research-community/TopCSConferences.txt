@@ -1,0 +1,105 @@
+VLDB	Very Large Data Bases	Databases
+AAAI	National Conference on Artificial Intelligence	Artificial Intelligence and Related
+AAMAS	Adaptive Agents and Multi-Agents Systems	Artificial Intelligence and Related
+ACL	Meeting of the Association for Computational Linguistics	Artificial Intelligence and Related
+ASPLOS	Architectural Support for Programming Languages and Operating Systems	Hardware and Architecture
+CAV	Computer Aided Verification	Programming Languages and Software Engineering
+CCS	Computer and Communications Security	System Technology
+CDC	Conference on Decision and Control	
+CHI	Human Factors in Computing Systems	
+CIKM	Conference on Information and Knowledge Management	Artificial Intelligence and Related
+CLEF	Cross-Language Evaluation Forum	
+COLING	International Conference on Computational Linguistics	Artificial Intelligence and Related
+COLT	Conference on Learning Theory	Artificial Intelligence and Related
+CoNLL	Conference on Computational Natural Language Learning	Artificial Intelligence and Related
+CRYPTO	International Cryptology Conference	Algorithms and Theory
+CVPR	Computer Vision and Pattern Recognition	Artificial Intelligence and Related
+DAC	Design Automation Conference	Hardware and Architecture
+DCC	Data Compression Conference	Applications and Media
+EACL	Conference of the European Chapter of the Association for Computational Linguistics	Artificial Intelligence and Related
+EC	Economics and Computation	
+ECCV	European Conference on Computer Vision	Artificial Intelligence and Related
+EMBC	International Conference of the IEEE Engineering in Medicine and Biology Society	Biomedical Engineering
+EMNLP	Empirical Methods in Natural Language Processing	Artificial Intelligence and Related
+FAST	File and Storage Technologies	
+FM	Formal Methods	Programming Languages and Software Engineering
+FOCS	Foundations of Computer Science	Algorithms and Theory
+FSE	Foundations of Software Engineering	Programming Languages and Software Engineering
+GLOBECOM	Global Communications Conference	
+HPCA	High-Performance Computer Architecture	Hardware and Architecture
+i3D	Interactive 3D Graphics and Games	Applications and Media
+ICASSP	International Conference on Acoustics, Speech, and Signal Processing	Artificial Intelligence and Related
+ICC	International Conference on Communications	System Technology
+ICCAD	International Conference on Computer Aided Design	Hardware and Architecture
+ICCV	International Conference on Computer Vision	Artificial Intelligence and Related
+ICDCS	International Conference on Distributed Computing Systems	System Technology
+ICDE	International Conference on Data Engineering	Databases
+ICDT	International Conference on Database Theory	Databases
+ICFP	International Conference on Functional Programming	Programming Languages and Software Engineering
+ICIP	International Conference on Image Processing	Artificial Intelligence and Related
+ICLP	International Conference on Logic Programming	Programming Languages and Software Engineering
+ICLR	International Conference on Learning Representations	Artificial Intelligence and Related
+ICML	International Conference on Machine Learning	Artificial Intelligence and Related
+ICNP	International Conference on Network Protocols	System Technology
+ICPR	International Conference on Pattern Recognition	Artificial Intelligence and Related
+ICRA	International Conference on Robotics and Automation	Artificial Intelligence and Related
+ICSE	International Conference on Software Engineering	Programming Languages and Software Engineering
+IJCAI	International Joint Conference on Artificial Intelligence	Artificial Intelligence and Related
+IJCNLP	International Joint Conference on Natural Language Processing	Artificial Intelligence and Related
+IMTC	Instrumentation and Measurement Technology Conference	
+INFOCOM	International Conference on Computer Communications	System Technology
+INTERSPEECH	Conference of the International Speech Communication Association	Artificial Intelligence and Related
+IROS	Intelligent Robots and Systems	
+ISCA	International Symposium on Computer Architecture	Hardware and Architecture
+ISCAS	International Symposium on Circuits and Systems	
+ISIT	International Symposium on Information Theory	
+ISMB	Intelligent Systems in Molecular Biology	Biomedical
+ISNN	International Symposium on Neural Networks	Artificial Intelligence and Related
+ISSAC	International Symposium on Symbolic and Algebraic Computation	Algorithms and Theory
+ISSCC	International Solid-State Circuits Conference	Hardware and Architecture
+KDD	Knowledge Discovery and Data Mining	Artificial Intelligence and Related
+KR	Principles of Knowledge Representation and Reasoning	Artificial Intelligence and Related
+LICS	Logic in Computer Science	Algorithms and Theory
+LISA	USENIX Large Installation Systems Administration Conference	
+LREC	Language Resources and Evaluation	Artificial Intelligence and Related
+MICRO	International Symposium on Microarchitecture	Hardware and Architecture
+MM	ACM Multimedia	Applications and Media
+MOBICOM	ACM/IEEE International Conference on Mobile Computing and Networking	System Technology
+NAACL	North American Chapter of the Association for Computational Linguistics	Artificial Intelligence and Related
+NeurIPS	Neural Information Processing Systems	Artificial Intelligence and Related
+NSDI	Networked Systems Design and Implementation	
+OOPSLA	Conference on Object-Oriented Programming Systems, Languages, and Applications	Programming Languages and Software Engineering
+OSDI	Operating Systems Design and Implementation	System Technology
+PACT	International Conference on Parallel Architectures and Compilation Techniques	System Technology
+PECCS	International Conference on Pervasive and Embedded Computing and Communication Systems	Applications and Media
+PLDI	Programming Language Design and Implementation	Programming Languages and Software Engineering
+PODC	Principles of Distributed Computing	System Technology
+PODS	Symposium on Principles of Database Systems	Databases
+POPL	Symposium on Principles of Programming Languages	Programming Languages and Software Engineering
+PPoPP	ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming	System Technology
+RECOMB	Research in Computational Molecular Biology	Biomedical
+RSS	Robotics: Science and Systems	
+RTAS	Real Time Technology and Applications Symposium	System Technology
+RTSS	Real-Time Systems Symposium	System Technology
+S&P	IEEE Symposium on Security and Privacy	System Technology
+SIGCOMM	ACM Special Interest Group on Data Communication	System Technology
+SIGCSE	Technical Symposium on Computer Science Education	
+SIGDIAL	Annual Meeting of the Special Interest Group on Discourse and Dialogue	Artificial Intelligence and Related
+SIGGRAPH	International Conference on Computer Graphics and Interactive Techniques	Applications and Media
+SIGIR	International ACM SIGIR Conference on Research and Development in Information Retrieval	Artificial Intelligence and Related
+SIGMETRICS	Measurement and Modeling of Computer Systems	Applications and Media
+SIGMOD	International Conference on Management of Data	Databases
+SMC	Systems, Man and Cybernetics	
+SoCC	Symposium on Cloud Computing	
+SoCG	Symposium on Computational Geometry	Algorithms and Theory
+SODA	Symposium on Discrete Algorithms	Algorithms and Theory
+SOSP	Symposium on Operating Systems Principles	System Technology
+SPAA	ACM Symposium on Parallel Algorithms and Architectures	Algorithms and Theory
+STOC	Symposium on the Theory of Computing	Algorithms and Theory
+TSD	Text, Speech and Dialogue	
+UAI	Uncertainty in Artificial Intelligence	Artificial Intelligence and Related
+UbiComp	Ubiquitous Computing	
+USENIX ATC	USENIX Annual Technical Conference	
+VTC	Vehicular Technology Conference	
+WSDM	Web Search and Data Mining	Artificial Intelligence and Related
+WWW	The Web Conference	Artificial Intelligence and Related
