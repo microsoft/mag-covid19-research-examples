@@ -1,0 +1,82 @@
+//
+// This U-SQL script demonstrates loading data provided in this dataset
+// and computing h-index for all authors of an affiliation.
+// U-SQL script could be run in Azure Data Lake Analytic service.
+//
+// To do:
+//   1. Run CreateFunctions.usql to define functions for accessing MAG streams
+//   2. Run NetworkSimilarityFunction.usql to define functions for computing top related entities
+//   3. Replace <AzureStorageAccount> with your Azure Storage account containing MAG dataset
+//   4. Replace <MagContainer> with the container name in Azure Storage account containing MAG dataset, usually in the form of mag-yyyy-mm-dd
+//
+
+DECLARE @blobAccount   string = "<AzureStorageAccount>";
+DECLARE @blobContainer string = "<MagContainer>"; // mag-yyyy-mm-dd
+DECLARE @uriPrefix   string = "wasb://" + @blobContainer + "@" + @blobAccount + "/";
+DECLARE @resourcePathFosCopaper string = "ns/FosCopaper.txt"; // Network similarity resouce path for FosCopaper.
+DECLARE @resourcePathFosCovenue string = "ns/FosCovenue.txt"; // Network similarity resouce path for FosCovenue.
+DECLARE @resourcePathFosMetapath string = "ns/FosMetapath.txt"; // Network similarity resouce path for FosMetapath.
+DECLARE @entityId1 long = 3008058167; // Entity id of Coronavirus disease 2019 (COVID-19)
+DECLARE @entityId2 long = 3007834351; // Entity id of Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)
+
+DECLARE @outPath string = "/Output/NetworkSimilarity/FosRelatedEntitiesDetail.tsv";
+
+// Getting Copaper top related entities for entityId1
+@fosCopaperEntities1 =
+    AcademicGraph.NetworkSimilarity.GetTopEntities(@uriPrefix, @resourcePathFosCopaper, @entityId1, 10, (float)0);
+
+// Getting Covenue top related entities for entityId1
+@fosCovenueEntities1 =
+    AcademicGraph.NetworkSimilarity.GetTopEntities(@uriPrefix, @resourcePathFosCovenue, @entityId1, 10, (float)0);
+
+// Getting Metapath top related entities for entityId1
+@fosMetapathEntities1 =
+    AcademicGraph.NetworkSimilarity.GetTopEntities(@uriPrefix, @resourcePathFosMetapath, @entityId1, 10, (float)0);
+
+// Getting Copaper top related entities for entityId2
+@fosCopaperEntities2 =
+    AcademicGraph.NetworkSimilarity.GetTopEntities(@uriPrefix, @resourcePathFosCopaper, @entityId2, 10, (float)0);
+
+// Getting Covenue top related entities for entityId2
+@fosCovenueEntities2 =
+    AcademicGraph.NetworkSimilarity.GetTopEntities(@uriPrefix, @resourcePathFosCovenue, @entityId2, 10, (float)0);
+
+// Getting Metapath top related entities for entityId2
+@fosMetapathEntities2 =
+    AcademicGraph.NetworkSimilarity.GetTopEntities(@uriPrefix, @resourcePathFosMetapath, @entityId2, 10, (float)0);
+
+@fosRelatedEntities =
+    SELECT *, "Copaper" AS SimilarityType FROM @fosCopaperEntities1
+    UNION ALL
+    SELECT *, "Covenue" AS SimilarityType FROM @fosCovenueEntities1
+    UNION ALL
+    SELECT *, "Metapath" AS SimilarityType FROM @fosMetapathEntities1
+    UNION ALL
+    SELECT *, "Copaper" AS SimilarityType FROM @fosCopaperEntities2
+    UNION ALL
+    SELECT *, "Covenue" AS SimilarityType FROM @fosCovenueEntities2
+    UNION ALL
+    SELECT *, "Metapath" AS SimilarityType FROM @fosMetapathEntities2;
+
+// Get FieldsOfStudy stream from MAG
+@fos = FieldsOfStudy(@uriPrefix);
+
+// Join FieldsOfStudy stream to get Fos DisplayName
+@fosRelatedEntitiesDetail = 
+    SELECT
+        Z.EntityId,
+        F1.DisplayName AS EntityDisplayName,
+        Z.SimilarityType,
+        Z.Score,
+        Z.SimilarEntityId,
+        F2.DisplayName AS SimilarEntityDisplayName
+    FROM @fosRelatedEntities AS Z
+    INNER JOIN @fos AS F1
+        ON Z.EntityId == F1.FieldOfStudyId
+    INNER JOIN @fos AS F2
+        ON Z.SimilarEntityId == F2.FieldOfStudyId;
+
+OUTPUT @fosRelatedEntitiesDetail
+TO @outPath
+ORDER BY EntityId, SimilarityType, Score DESC
+USING Outputters.Tsv(outputHeader:true, quoting:false);
