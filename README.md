@@ -27,8 +27,6 @@ or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-expl
 
 ## Contents
 
-Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
-
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
 | `src`             | Sample source code.                        |
@@ -51,11 +49,11 @@ or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-expl
 
 ## Key concepts
 
-[MAG](https://www.microsoft.com/en-us/research/project/microsoft-academic-graph/)
+[MAG](https://www.microsoft.com/en-us/research/project/microsoft-academic-graph/) - The Microsoft Academic Graph
  
-[Project Academic Knowledge API](https://www.microsoft.com/en-us/research/project/academic-knowledge/) 
+[Project Academic Knowledge API](https://www.microsoft.com/en-us/research/project/academic-knowledge/) - Knowledge API (throttled)
 
-[MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-exploration-service/)
+[MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-exploration-service/) - Knowledge API (self-hosted on Azure)
 
 ## DATA
 
