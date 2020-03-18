@@ -74,3 +74,42 @@ In this section, you submit an ADLA job to count publications for each conferenc
 ## View output data
 
 The output of the ADLA job in previous section goes to "/Output/TopCSConferencePaperRegions.tsv" in the Azure Data Lake Storage (ADLS). In this section, you use [Azure portal](https://portal.azure.com/) to view output content.
+
+1. In the [Azure portal](https://portal.azure.com), go to the Azure Data Lake Storage (ADLS) service that you created, and select **Data Explorer**.
+
+1. Select **Output** > **TopCSConferencePaperRegions.tsv**.
+
+   ![Data Explorer](TopCSConferencePaperRegions.png "Data Explorer")
+   
+1. You see an output similar to the following snippet:
+ ![TopCSConferencePaperRegions.tsv preview](Outputpreview.png "TopCSConferencePaperRegions.tsv preview")
+ 
+1. TopCSConferencePaperRegions.tsv column definition as below.
+   |Column #  |Description  |Example  |
+   |---------|---------|---------|
+   |0 | Conference Series Short Name | AAAI |
+   |1 | Conference Series Long Name | National Conference on Artificial Intelligence |
+   |2 | Conference Domain | Artificial Intelligence and Related |
+   |3 | Conference Instance Name | AAAI 2000 |
+   |4 | Conference Location | Austin, TX, USA |
+   |5 | Conference Start Date | 2000-07-30T00:00:00.000 |
+   |6 | Conference End Date | 2000-08-03T00:00:00.000 |
+   |7 | Year | 2000 |
+   |8 | First Author Affiliation Region | Canada |
+   |9 | All Authors Count | 24 |
+   |10 | First Author Count | 12 |
+   
+1. You can download this data, using Excel or any your preferred tool to do further analysis.
+
+## Next steps
+
+If you're interested in Academic analytics and visualization, we have created U-SQL samples that use some of the same functions referenced in this tutorial.
+
+> [!div class="nextstepaction"]
+>[Analytics and visualization samples](samples-azure-data-lake-analytics.md)
+
+## Resources
+
+* [Get started with Azure Data Lake Analytics using Azure portal](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)
+* [Data Lake Analytics](https://azure.microsoft.com/services/data-lake-analytics/)
+* [U-SQL Language Reference](https://docs.microsoft.com/u-sql/)
