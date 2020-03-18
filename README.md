@@ -55,7 +55,7 @@ or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-expl
 
 ## DATA
 
-- [WHO, PubMed Id to MAG ID mapping file](./src/data/CORD19-MappedToMAG.tsv)
+- [WHO, PubMed Id to MAG ID mapping file](./src/data/CORD19-MappedToMAG-03-06-2020.tsv)
 
 ## MAG Samples
 
