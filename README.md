@@ -1,11 +1,9 @@
 ---
 page_type: sample
 languages:
-- csharp
-products:
-- dotnet
-description: "Add 150 character max description"
-urlFragment: "update-this-to-unique-url-stub"
+- python
+- USQL
+description: Sample code to retrieve COVID-19 data from Microsoft Academic Graph resources
 ---
 
 # Official Microsoft Sample
@@ -18,15 +16,21 @@ Guidance on onboarding samples to docs.microsoft.com/samples: https://review.doc
 Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
 -->
 
-Give a short description for your sample here. What does it do and why is it important?
+The code samples provided here provide WHO / PubMed ID -> MAG ID mapping data as well 
+as code examples showing how to perform COVID-19 related analysis against the 
+[MAG](https://www.microsoft.com/en-us/research/project/microsoft-academic-graph/) Dataset 
+and [Project Academic Knowledge API](https://www.microsoft.com/en-us/research/project/academic-knowledge/) 
+or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-exploration-service/).
+
 
 ## Contents
-
-Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
 
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
 | `src`             | Sample source code.                        |
+| `src\data`        | Data files used to link MAG and external data. |
+| `src\MAG-Samples`  | Sample source code that can be run against the MAG dataset. |
+| `src\MAKES-Samples` | Sample source code that can be run agains the MAKES API. |
 | `.gitignore`      | Define what to ignore at commit time.      |
 | `CHANGELOG.md`    | List of changes to the sample.             |
 | `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
@@ -35,19 +39,33 @@ Outline the file contents of the repository. It helps users navigate the codebas
 
 ## Prerequisites
 
-Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases.
+Depending on the samples you are using, you will either need a subscription to the 
+[MAG](https://www.microsoft.com/en-us/research/project/microsoft-academic-graph/) dataset or 
+the [Project Academic Knowledge API](https://www.microsoft.com/en-us/research/project/academic-knowledge/) 
+or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-exploration-service/).
 
-## Setup
-
-Explain how to prepare the sample once the user clones or downloads the repository. The section should outline every step necessary to install dependencies and set up any settings (for example, API keys and output folders).
-
-## Running the sample
-
-Outline step-by-step instructions to execute the sample and see its output. Include steps for executing the sample from the IDE, starting specific services in the Azure portal or anything related to the overall launch of the code.
 
 ## Key concepts
 
-Provide users with more context on the tools and services used in the sample. Explain some of the code that is being used and how services interact with each other.
+[MAG](https://www.microsoft.com/en-us/research/project/microsoft-academic-graph/) - The Microsoft Academic Graph
+ 
+[Project Academic Knowledge API](https://www.microsoft.com/en-us/research/project/academic-knowledge/) - Knowledge API (throttled)
+
+[MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-exploration-service/) - Knowledge API (self-hosted on Azure)
+
+## DATA
+
+- [WHO, PubMed Id to MAG ID mapping file](./src/data/CORD19-MappedToMAG-03-06-2020.tsv)
+
+## MAG Samples
+
+- [Network Similarity package](./src/MAG-Samples/NetworkSimilaritySample/readme.md)
+- [COVID-19 impact on Computer Science and related conferences](./src/MAG-Samples/impact-of-covid19-on-the-computer-science-research-community/readme.md) - [(Blog post)](https://www.microsoft.com/en-us/research/project/academic/articles/impact-of-covid-19-on-computer-science-research-community)
+
+
+## MAKES Samples
+
+- TBD
 
 ## Contributing
 
