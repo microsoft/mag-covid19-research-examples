@@ -55,12 +55,12 @@ or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-expl
 
 ## DATA
 
-- [WHO, PubMed Id to MAG ID mapping file](/data/COVID-19MappedToMAG.tsv)
+- [WHO, PubMed Id to MAG ID mapping file](./src/data/CORD19-MappedToMAG.tsv)
 
 ## MAG Samples
 
-- [Network Similarity package](/MAG-Samples/NetworkSimilaritySample/readme.md)
-- [COVID-19 impact on Computer Science and related conferences](/MAG-Samples/impact-of-covid19-on-the-computer-science-research-community/readme.md) - [(Blog post)](https://www.microsoft.com/en-us/research/project/academic/articles/impact-of-covid-19-on-computer-science-research-community)
+- [Network Similarity package](./src/MAG-Samples/NetworkSimilaritySample/readme.md)
+- [COVID-19 impact on Computer Science and related conferences](./src/MAG-Samples/impact-of-covid19-on-the-computer-science-research-community/readme.md) - [(Blog post)](https://www.microsoft.com/en-us/research/project/academic/articles/impact-of-covid-19-on-computer-science-research-community)
 
 
 ## MAKES Samples
