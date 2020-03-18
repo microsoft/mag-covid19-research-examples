@@ -1,11 +1,9 @@
 ---
 page_type: sample
 languages:
-- csharp
-products:
-- dotnet
-description: "Add 150 character max description"
-urlFragment: "update-this-to-unique-url-stub"
+- python
+- USQL
+description: Sample code to retrieve COVID-19 data from Microsoft Academic Graph resources
 ---
 
 # Official Microsoft Sample
