@@ -19,10 +19,40 @@ Before you begin, you should have these items of information:
    :heavy_check_mark:  The name of the container in your Azure Storage (AS) account containing MAG dataset.
    
 ## Upload the data that this analysis needed
-1. We have picked the 105 most impactful CS conferences for this analysis. Upload the list of top CS conferences  [TopCSConferences.txt](TopCSConferences.txt) to a Azure Storage, it can be the same storage containing MAG dataset.
-2. The authors' affiliation locations are used as the paper locations. For your convenience, we included the affiliation-region mapping in [AffilicationRegions.txt](AffilicationRegions.txt). This file has all the affiliations involved in this analysis. If you wish to get more affiliations location, MAG Affiliation.txt contains latitude and longitude for each affiliation. You can use [Bing Map API](https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-point) to get the region/country from the coordinates.
 
+1. Upload the list of 105 most impactful CS conferences to a Azure Storage, it can be the same storage containing MAG dataset.<br> Download  [TopCSConferences.txt](TopCSConferences.txt) to your local drive. <br> From [Azure portal](https://portal.azure.com), go to the Azure Storage account > **Containers > Upload > Select TopCSConferences.txt from your local drive > Upload**
+
+ ![UploadFiles.png](UploadFiles.png "Upload files")
+ 
+2. The authors' affiliation locations are used as the paper locations. For your convenience, we included the affiliation-region mapping in [AffilicationRegions.txt](AffilicationRegions.txt). This file has all the affiliations involved in this analysis. Upload this file to the same location as TopCSConferences.txt. <br>If you wish to get more affiliations location, MAG Affiliation.txt contains latitude and longitude for each affiliation. You can use [Bing Map API](https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-point) to get the region/country from the coordinates.
+
+## Define functions to extract MAG and conference data
+
+In prerequisite [Set up Azure Data Lake Analytics](get-started-setup-azure-data-lake-analytics.md), you added the Azure Storage (AS) created for MAG provision as a data source for the Azure Data Lake Analytics service (ADLA). In this section, you submit an ADLA job to create functions extracting MAG and conference data from Azure Storage (AS).
+
+1. Download `samples/CreateFunctions.usql` to your local drive. <br> From [Azure portal](https://portal.azure.com), go to the Azure Storage account > **Containers > [mag-yyyy-mm-dd] > samples > CreateFunctions.usql > Download**.
+
+   ![Download CreateFunctions.usql](DownloadCreateFunctions.usql.png "Download CreateFunctions.usql")
+
+2. Download [TopCSConf_CreateFunctions.usql](TopCSConf_CreateFunctions.usql) to your local drive.
+
+3. Go to the Azure Data Lake Analytics (ADLA) service that you created, and select **Overview > New job > Open file**. Select `CreateFunctions.usql` in your local drive. <br> Select **Submit**
+
+   ![Submit CreateFunctions job](SubmitCreateFunctionsJob.png "Submit CreateFunctions job")
+
+1. The job should finish successfully.
+
+   ![CreateFunctions job status](https://docs.microsoft.com/en-us/academic-services/graph/media/samples-azure-data-lake-hindex/create-functions-status.png "CreateFunctions job status")
+   
+1. Repeat step 3-4 with TopCSConf_CreateFunctions.usql
+
+## Count publications by region
+
+In this section, you submit an ADLA job to count publications for each conference and region.
+
+1. In the [Azure portal](https://portal.azure.com), go to the Azure Data Lake Analytics (ADLA) service that you created, and select **Overview** > **New Job**.
+
+   ![Azure Data Lake Analytics - New job](media/samples-azure-data-lake-hindex/new-job.png "Azure Data Lake Analytics - New job")
 
 
 [TopCSConferencesByRegion.usql](TopCSConferencesByRegion.usql)
-[TopCSConf_CreateFunctions.usql](TopCSConf_CreateFunctions.usql)
