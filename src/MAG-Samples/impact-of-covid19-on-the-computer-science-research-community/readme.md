@@ -75,14 +75,12 @@ In this section, you submit an ADLA job to count publications for each conferenc
 
 The output of the ADLA job in previous section goes to "/Output/TopCSConferencePaperRegions.tsv" in the Azure Data Lake Storage (ADLS). In this section, you use [Azure portal](https://portal.azure.com/) to view output content.
 
-1. In the [Azure portal](https://portal.azure.com), go to the Azure Data Lake Storage (ADLS) service that you created, and select **Data Explorer**.
+1. In the [Azure portal](https://portal.azure.com), go to the Azure Data Lake Storage (ADLS) service that you created, and select **Data Explorer > Output > TopCSConferencePaperRegions.tsv**.
 
-1. Select **Output** > **TopCSConferencePaperRegions.tsv**.
-
-   ![Data Explorer](TopCSConferencePaperRegions.png "Data Explorer")
+   ![Data Explorer](TopCSConfernecePaperRegions.png "Data Explorer")
    
 1. You see an output similar to the following snippet:
- ![TopCSConferencePaperRegions.tsv preview](Outputpreview.png "TopCSConferencePaperRegions.tsv preview")
+ ![TopCSConferencePaperRegions.tsv preview](OutputPreview.png "TopCSConferencePaperRegions.tsv preview")
  
 1. TopCSConferencePaperRegions.tsv column definition as below.
    |Column #  |Description  |Example  |
@@ -99,14 +97,14 @@ The output of the ADLA job in previous section goes to "/Output/TopCSConferenceP
    |9 | All Authors Count | 24 |
    |10 | First Author Count | 12 |
    
-1. You can download this data, using Excel or any your preferred tool to do further analysis.
+1. You can download this data, using Excel or any your preferred tool for further analysis.
 
 ## Next steps
 
 If you're interested in Academic analytics and visualization, we have created U-SQL samples that use some of the same functions referenced in this tutorial.
 
 > [!div class="nextstepaction"]
->[Analytics and visualization samples](samples-azure-data-lake-analytics.md)
+>[Analytics and visualization samples](https://docs.microsoft.com/en-us/academic-services/graph/samples-azure-data-lake-analytics)
 
 ## Resources
 
