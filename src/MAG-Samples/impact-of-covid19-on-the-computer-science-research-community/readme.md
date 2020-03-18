@@ -36,7 +36,7 @@ In prerequisite [Set up Azure Data Lake Analytics](get-started-setup-azure-data-
 
 2. Download [TopCSConf_CreateFunctions.usql](TopCSConf_CreateFunctions.usql) to your local drive.
 
-3. Go to the Azure Data Lake Analytics (ADLA) service that you created, and select **Overview > New job > Open file**. Select `CreateFunctions.usql` in your local drive. <br> Select **Submit**
+3. Go to the Azure Data Lake Analytics (ADLA) service that you created, and select **Overview > New job > Open file**. Select `CreateFunctions.usql` in your local drive. <br> Select **Submit**.
 
    ![Submit CreateFunctions job](SubmitCreateFunctionsJob.png "Submit CreateFunctions job")
 
@@ -44,15 +44,33 @@ In prerequisite [Set up Azure Data Lake Analytics](get-started-setup-azure-data-
 
    ![CreateFunctions job status](https://docs.microsoft.com/en-us/academic-services/graph/media/samples-azure-data-lake-hindex/create-functions-status.png "CreateFunctions job status")
    
-1. Repeat step 3-4 with TopCSConf_CreateFunctions.usql
+1. Repeat step 3-4 with TopCSConf_CreateFunctions.usql.
 
 ## Count publications by region
 
 In this section, you submit an ADLA job to count publications for each conference and region.
 
-1. In the [Azure portal](https://portal.azure.com), go to the Azure Data Lake Analytics (ADLA) service that you created, and select **Overview** > **New Job**.
+1. Download [TopCSConferencesByRegion.usql](TopCSConferencesByRegion.usql) to local drive.
 
-   ![Azure Data Lake Analytics - New job](media/samples-azure-data-lake-hindex/new-job.png "Azure Data Lake Analytics - New job")
+1. Replace placeholder values in the script using the table below.
 
+   |Value  |Description  |
+   |---------|---------|
+   |**`<MagContainer>`** | The container name in Azure Storage (AS) account containing MAG dataset, usually in the form of **mag-yyyy-mm-dd**. |
+   |**`<AzureStorageAccount>`** | The name of your Azure Storage (AS) account containing MAG dataset. |
+   |**`<SourceFileContainer>`** | The container name in Azure Storage (AS) account containing TopCSConferences.txt and AffilicationRegions.txt dataset. |
+   |**`<SourceFileStorageAccount>`** | The name of your Azure Storage (AS) account containing TopCSConferences.txt and AffilicationRegions.txt dataset. |
+   
+1. In the [Azure portal](https://portal.azure.com), go to the Azure Data Lake Analytics (ADLA) service that you created, and select **Overview > New Job > Open file**. <br> Select **TopCSConferencesByRegion.usql** from your local drive.
 
-[TopCSConferencesByRegion.usql](TopCSConferencesByRegion.usql)
+1. Change **AUs** to 10, and select **Submit**.
+  
+  ![Submit TopCS Job](SubmitTopCSJob.png "Submit TopCS Job")
+  
+1. The job should finish successfully in about 8 minutes.
+
+  ![TopCS Job Status](JobStatus.png "TopCS Job Status")
+
+## View output data
+
+The output of the ADLA job in previous section goes to "/Output/TopCSConferencePaperRegions.tsv" in the Azure Data Lake Storage (ADLS). In this section, you use [Azure portal](https://portal.azure.com/) to view output content.
