@@ -1,6 +1,6 @@
 //
 // This U-SQL script demonstrates loading data provided in this dataset
-// and computing h-index for all authors of an affiliation.
+// and computing multi-sense related entities for fields of study.
 // U-SQL script could be run in Azure Data Lake Analytic service.
 //
 // To do:
