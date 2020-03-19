@@ -1,0 +1,229 @@
+//
+// This U-SQL script demonstrates loading data in MAG and filtering Coronavirus papers.
+// U-SQL script could be run in Azure Data Lake Analytic service.
+//
+// To do:
+//   1. Run CreateFunctions.usql to define functions for accessing MAG streams
+//   2. Replace <AzureStorageAccount> with your Azure Storage account containing MAG dataset
+//   3. Replace <MagContainer> with the container name in Azure Storage account containing MAG dataset, usually in the form of mag-yyyy-mm-dd
+//
+
+//*******************Input Variable Section********************************
+//        Change these variables for different calculations
+//*************************************************************************
+DECLARE @blobAccount   string = "<AzureStorageAccount>";
+DECLARE @blobContainer string = "<MagContainer>"; // mag-yyyy-mm-dd
+DECLARE @uriPrefix   string = "wasb://" + @blobContainer + "@" + @blobAccount + "/";
+
+//*******************Output Variable Section********************************
+//        Defining output paths
+//*************************************************************************
+DECLARE @outBaseDir string = @"/Output/CoronavirusPapers/";
+DECLARE @outPath_Papers string = @outBaseDir + "Papers.tsv";
+DECLARE @outPath_Stats string = @outBaseDir + "Stats.tsv";
+
+///*******************Constant Variable Section*****************************
+//        Defining const variables to be used by other parts of the script
+//*************************************************************************
+DECLARE @fosString1 string = "coronavirus";
+DECLARE @fosString2 string = "middle east respiratory syndrome";
+DECLARE @fosString3 string = "severe acute respiratory syndrome";
+
+DECLARE @abstractString1 string = "coronavirus";
+DECLARE @abstractString2 string = "covid-19";
+DECLARE @abstractString3 string = "2019-ncov";
+DECLARE @abstractString4 string = "sars-cov-2";
+DECLARE @abstractString5 string = "hcov-19";
+DECLARE @abstractString6 string = "2012-ncov";
+
+DECLARE @titleString1 string = "coronavirus";
+DECLARE @titleString2 string = "corona virus";
+DECLARE @titleString3 string = "covid 19";
+DECLARE @titleString4 string = "2019 ncov";
+DECLARE @titleString5 string = "ncov 2019";
+DECLARE @titleString6 string = "sars cov 2";
+DECLARE @titleString7 string = "hcov 19";
+DECLARE @titleString8 string = "2012 ncov";
+
+// Load Academic Graph data
+@magPapers = Papers(@uriPrefix);
+@magPaperFieldsOfStudy = PaperFieldsOfStudy(@uriPrefix);
+@magFos = FieldsOfStudy(@uriPrefix);
+@magAbstract = PaperAbstractsInvertedIndex(@uriPrefix);
+
+// Find papers by fields of study
+@fosIds =
+    SELECT
+        FieldOfStudyId,
+        DisplayName
+    FROM @magFos
+    WHERE
+        NormalizedName.Contains(@fosString1) ||
+        NormalizedName.Contains(@fosString2) ||
+        NormalizedName.Contains(@fosString3);
+
+@fosMatched =
+    SELECT
+        A.PaperId,
+        B.FieldOfStudyId,
+        B.DisplayName
+    FROM @magPaperFieldsOfStudy AS A
+	INNER JOIN @fosIds AS B
+	ON A.FieldOfStudyId == B.FieldOfStudyId;
+
+@fosMatchedCounts =
+    SELECT
+        FieldOfStudyId,
+        ANY_VALUE(DisplayName) AS DisplayName,
+        COUNT() AS Count
+    FROM @fosMatched
+    GROUP BY FieldOfStudyId;
+
+// Find papers by abstract match
+@abstract =
+    SELECT
+        PaperId,
+        IndexedAbstract.ToLower() AS IndexedAbstractLowered
+    FROM @magAbstract;
+
+@abstractMatched =
+    SELECT
+        PaperId,
+        IndexedAbstractLowered.Contains("\"" + @abstractString1 + "\"") AS Match1,
+        IndexedAbstractLowered.Contains("\"" + @abstractString2 + "\"") AS Match2,
+        IndexedAbstractLowered.Contains("\"" + @abstractString3 + "\"") AS Match3,
+        IndexedAbstractLowered.Contains("\"" + @abstractString4 + "\"") AS Match4,
+        IndexedAbstractLowered.Contains("\"" + @abstractString5 + "\"") AS Match5,
+        IndexedAbstractLowered.Contains("\"" + @abstractString6 + "\"") AS Match6
+    FROM @abstract;
+
+@abstractMatched =
+    SELECT *
+    FROM @abstractMatched
+    WHERE (Match1 || Match2 || Match3 || Match4 || Match5 || Match6);
+
+@abstractMatchedCount =
+    SELECT
+        SUM(Match1 ? 1 : 0) AS Count1,
+        SUM(Match2 ? 1 : 0) AS Count2,
+        SUM(Match3 ? 1 : 0) AS Count3,
+        SUM(Match4 ? 1 : 0) AS Count4,
+        SUM(Match5 ? 1 : 0) AS Count5,
+        SUM(Match6 ? 1 : 0) AS Count6,
+        COUNT() AS TotalCount
+    FROM @abstractMatched;
+
+// Find papers by title match
+@papers =
+    SELECT
+        PaperId,
+        " " + PaperTitle + " " AS Title
+    FROM @magPapers;
+
+@titleMatched =
+    SELECT
+        PaperId,
+        Title.Contains(" " + @titleString1 + " ") AS Match1,
+        Title.Contains(" " + @titleString2 + " ") AS Match2,
+        Title.Contains(" " + @titleString3 + " ") AS Match3,
+        Title.Contains(" " + @titleString4 + " ") AS Match4,
+        Title.Contains(" " + @titleString5 + " ") AS Match5,
+        Title.Contains(" " + @titleString6 + " ") AS Match6,
+        Title.Contains(" " + @titleString7 + " ") AS Match7,
+        Title.Contains(" " + @titleString8 + " ") AS Match8
+    FROM @papers;
+
+@titleMatched =
+    SELECT *
+    FROM @titleMatched
+    WHERE (Match1 || Match2 || Match3 || Match4 || Match5 || Match6 || Match7 || Match8);
+
+@titleMatchedCount =
+    SELECT
+        SUM(Match1 ? 1 : 0) AS Count1,
+        SUM(Match2 ? 1 : 0) AS Count2,
+        SUM(Match3 ? 1 : 0) AS Count3,
+        SUM(Match4 ? 1 : 0) AS Count4,
+        SUM(Match5 ? 1 : 0) AS Count5,
+        SUM(Match5 ? 1 : 0) AS Count6,
+        SUM(Match5 ? 1 : 0) AS Count7,
+        SUM(Match5 ? 1 : 0) AS Count8,
+        COUNT() AS TotalCount
+    FROM @titleMatched;
+
+@targetPapers =
+    SELECT DISTINCT PaperId, "FOS" AS Field FROM @fosMatched
+    UNION
+    SELECT DISTINCT PaperId, "Abstract" AS Field FROM @abstractMatched
+    UNION 
+    SELECT DISTINCT PaperId, "Title" AS Field FROM @titleMatched;
+
+@targetPapers = 
+    SELECT PaperId, string.Join(",", ARRAY_AGG(Field)) AS MatchedFields
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Output paper details
+@targetPapersDetail =
+    SELECT
+        (A.Date != NULL ? ((DateTime)A.Date).ToString("yyyy-MM-dd") : "") AS PublicationDate,
+        A.PaperTitle AS Title,
+		T.MatchedFields AS MatchedFields,
+        A.OriginalVenue AS Venue,
+        A.Publisher AS Publisher,
+        A.PaperId AS PaperId,
+        A.FamilyId AS FamilyId,
+        A.CreatedDate.ToString("yyyy-MM-dd") AS CreatedDate
+    FROM @targetPapers AS T 
+    INNER JOIN @magPapers AS A
+        ON T.PaperId == A.PaperId;
+
+OUTPUT @targetPapersDetail
+TO @outPath_Papers
+ORDER BY PublicationDate
+USING Outputters.Tsv(outputHeader:true);
+
+// Output stats
+@stats = 
+    SELECT "0 All Fields" AS Field, "All matches" AS Description, COUNT() AS Count FROM @targetPapers
+    UNION ALL
+    SELECT "1 Abstract" AS Field, "All abstract matches" AS Description, TotalCount AS Count FROM @abstractMatchedCount
+    UNION ALL
+    SELECT "1 Abstract" AS Field, @abstractString1 AS Description, Count1 AS Count FROM @abstractMatchedCount
+    UNION ALL
+    SELECT "1 Abstract" AS Field, @abstractString2 AS Description, Count2 AS Count FROM @abstractMatchedCount
+    UNION ALL
+    SELECT "1 Abstract" AS Field, @abstractString3 AS Description, Count3 AS Count FROM @abstractMatchedCount
+    UNION ALL
+    SELECT "1 Abstract" AS Field, @abstractString4 AS Description, Count4 AS Count FROM @abstractMatchedCount
+    UNION ALL
+    SELECT "1 Abstract" AS Field, @abstractString5 AS Description, Count5 AS Count FROM @abstractMatchedCount
+    UNION ALL
+    SELECT "1 Abstract" AS Field, @abstractString6 AS Description, Count6 AS Count FROM @abstractMatchedCount
+    UNION ALL
+    SELECT "2 Title" AS Field, "All title matches" AS Description, TotalCount AS Count FROM @titleMatchedCount
+    UNION ALL
+    SELECT "2 Title" AS Field, @titleString1 AS Description, Count1 AS Count FROM @titleMatchedCount
+    UNION ALL
+    SELECT "2 Title" AS Field, @titleString2 AS Description, Count2 AS Count FROM @titleMatchedCount
+    UNION ALL
+    SELECT "2 Title" AS Field, @titleString3 AS Description, Count3 AS Count FROM @titleMatchedCount
+    UNION ALL
+    SELECT "2 Title" AS Field, @titleString4 AS Description, Count4 AS Count FROM @titleMatchedCount
+    UNION ALL
+    SELECT "2 Title" AS Field, @titleString5 AS Description, Count5 AS Count FROM @titleMatchedCount
+    UNION ALL
+    SELECT "2 Title" AS Field, @titleString6 AS Description, Count6 AS Count FROM @titleMatchedCount
+    UNION ALL
+    SELECT "2 Title" AS Field, @titleString7 AS Description, Count7 AS Count FROM @titleMatchedCount
+    UNION ALL
+    SELECT "2 Title" AS Field, @titleString8 AS Description, Count8 AS Count FROM @titleMatchedCount
+    UNION ALL
+    SELECT "3 FOS" AS Field, "All FOS matches" AS Description, COUNT(DISTINCT PaperId) AS Count FROM @fosMatched
+    UNION ALL
+    SELECT "3 FOS" AS Field, DisplayName AS Description, Count FROM @fosMatchedCounts;
+    
+OUTPUT @stats
+TO @outPath_Stats
+ORDER BY Field, Count DESC
+USING Outputters.Tsv(outputHeader:true);
