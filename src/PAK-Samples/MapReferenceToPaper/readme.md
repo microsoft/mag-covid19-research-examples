@@ -36,7 +36,7 @@ MagFamilyId | The Microsoft Academic paper family ID of the paper that was mappe
 MagDoi | The Digital Object Identifier (DOI) of the paper if available
 MagPubMedId | The PubMed identifier of the paper if available
 
-To view an example see the sample-output.txt file in the sampleData folder.
+To view an example see the [sample-output.txt](sampleData/sample-output.txt) file in the sampleData folder.
 
 ## Command line options
 
