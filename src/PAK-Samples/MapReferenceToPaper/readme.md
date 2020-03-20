@@ -25,6 +25,19 @@ To generate the mappings:
 
 The program processes one row at a time from the sample data, echoing the mapping to both the console and a mapped.txt file in bin/Release.
 
+The tool generates the following additional columns that precede the existing columns in the output rows:
+
+Name | Description
+--- | ---
+MagMappingConfidence | A confidence value that represents the % of reference string that was able to be mapped to the top entity result
+MagMappedLabels | A normalized version of the reference string that contains embedded XML tags that describe how different terms were mapped
+MagId | The Microsoft Academic paper ID that was mapped
+MagFamilyId | The Microsoft Academic paper family ID of the paper that was mapped if available
+MagDoi | The Digital Object Identifier (DOI) of the paper if available
+MagPubMedId | The PubMed identifier of the paper if available
+
+To view an example see the sample-output.txt file in the sampleData folder.
+
 ## Command line options
 
 The tool has the following parameters when run from the command line:
