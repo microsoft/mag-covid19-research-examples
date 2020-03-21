@@ -31,6 +31,7 @@ or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-expl
 | `src\data`        | Data files used to link MAG and external data. |
 | `src\MAG-Samples`  | Sample source code that can be run against the MAG dataset. |
 | `src\MAKES-Samples` | Sample source code that can be run agains the MAKES API. |
+| `src\PAK-Samples` | Sample source code that can be run agains the Project Academic Knowledge (PAK) API. |
 | `.gitignore`      | Define what to ignore at commit time.      |
 | `CHANGELOG.md`    | List of changes to the sample.             |
 | `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
