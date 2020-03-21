@@ -68,6 +68,10 @@ or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-expl
 
 - TBD
 
+## Project Academic Knowledge API Samples
+
+- [Tool for mapping reference strings to MAG paper IDs](./src/PAK-Samples/MapReferenceToPaper/readme.md)
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
