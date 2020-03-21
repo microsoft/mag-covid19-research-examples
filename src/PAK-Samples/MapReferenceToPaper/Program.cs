@@ -3,7 +3,6 @@
 //   Licensed under the MIT License.
 //-----------------------------------------------------------------------
 
-using FuzzyString;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -15,41 +14,7 @@ using System.Web;
 
 namespace MapReferenceToPaper
 {
-    /// <summary>
-    /// Contains information about a reference => paper mapping
-    /// </summary>
-    public class ReferenceMapping
-    {
-        /// <summary>
-        /// The original reference string provided as input
-        /// </summary>
-        public string OriginalReference { get; set; }
 
-        /// <summary>
-        /// The absolute % of the normalized reference string that was able to be mapped
-        /// </summary>
-        public double PercentOfReferenceMapped { get; set; }
-
-        /// <summary>
-        /// The normalized reference string that was used by Interpert
-        /// </summary>
-        public string NormalizedReference { get; set; }
-
-        /// <summary>
-        /// Terms from the normalized reference that could not be mapped to attributes in the top matching paper
-        /// </summary>
-        public string ReferenceNotMapped { get; set; }
-
-        /// <summary>
-        /// Version of the normalized reference string with embedded XML tags indicating how different terms were mapped
-        /// </summary>
-        public string MappedReference { get; set; }
-
-        /// <summary>
-        /// JSON object representing the mapped paper entity
-        /// </summary>
-        public JToken MappedPaper { get; set; }
-    }
 
     class Program
     {
@@ -353,7 +318,7 @@ namespace MapReferenceToPaper
             var targetWords = target.Split(' ');
 
             // Generate source n-grams of target word count +/- 1
-            var sourceNgrams = CreateStringWordNgrams(source, Math.Max(targetWords.Length - 1, 1), targetWords.Length + 1);
+            var sourceNgrams = source.CreateStringWordNgrams(Math.Max(targetWords.Length - 1, 1), targetWords.Length + 1);
 
             // Iterate through each n-gram to find the best match based on Jaccard distance w/greater n-gram length as a tie-breaker
             double bestDistance = 0;
@@ -369,49 +334,6 @@ namespace MapReferenceToPaper
             }
 
             return new Tuple<double, string>(bestDistance, nearestSubstring);
-        }
-
-        /// <summary>
-        /// Generates word ngrams of the specified sizes from a given text string
-        /// </summary>
-        /// <param name="textString">String to create ngrams for</param>
-        /// <param name="ngramMinSize">Optional minimum size of word ngram. Defaults to 1 (unigram)/</param>
-        /// <param name="ngramMaxSize">Optional maximum size of word ngram. Defaults to -1, which means to generate all possible word ngram sizes based on the total number of words in text string</param>
-        /// <returns>List of word ngrams of text string, sorted first by number of words and second by position of ngram in the original text string</returns>
-        public static List<string> CreateStringWordNgrams(string textString, int ngramMinSize = 1, int ngramMaxSize = -1)
-        {
-            if (string.IsNullOrWhiteSpace(textString))
-            {
-                return null;
-            }
-
-            var words = textString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var distinctNgrams = new HashSet<string>();
-            var allNgrams = new List<string>();
-
-            ngramMaxSize = ngramMaxSize == -1 ? words.Length : ngramMaxSize;
-
-            for (int ngramPosition = 0, ngramSize = ngramMinSize; ngramSize <= ngramMaxSize; ngramPosition++)
-            {
-                if (ngramPosition + ngramSize > words.Length)
-                {
-                    ngramSize++;
-                    ngramPosition = -1;
-                }
-                else
-                {
-                    var ngram = string.Join(" ", words.Skip(ngramPosition).Take(ngramSize));
-
-                    if (ngram.Length > 2 && !distinctNgrams.Contains(ngram))
-                    {
-                        allNgrams.Add(ngram);
-                        distinctNgrams.Add(ngram);
-                    }
-                }
-            }
-
-            return allNgrams.ToList();
         }
     }
 }
