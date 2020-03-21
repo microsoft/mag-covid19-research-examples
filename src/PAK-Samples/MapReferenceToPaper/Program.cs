@@ -51,8 +51,11 @@ namespace MapReferenceToPaper
         public JToken MappedPaper { get; set; }
     }
 
-    static class Program
+    class Program
     {
+        // Avoid creating new HttpClient for each request
+        static HttpClient client = new HttpClient();
+
         static void Main(string[] args)
         {
             if (args == null || args.Length < 6)
@@ -152,7 +155,7 @@ namespace MapReferenceToPaper
                 entityCount: 1,
                 attributes: attributesToMap + "," + attributesToReturn,
                 
-                // NOTE: Longer timeouts provide better quality interpretations. 500 is typically 
+                // NOTE: Longer timeouts can sometimes provide better quality interpretations, though generally 500ms is sufficient for most reference strings
                 timeout: 500);
 
             var result = JObject.Parse(resultString);
@@ -304,7 +307,6 @@ namespace MapReferenceToPaper
             int timeout = 500
             )
         {
-            var client = new HttpClient();
             var queryString = HttpUtility.ParseQueryString(string.Empty);
             var encodedQuery = HttpUtility.UrlEncode(query);
 
