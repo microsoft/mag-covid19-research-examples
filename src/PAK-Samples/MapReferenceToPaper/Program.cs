@@ -85,6 +85,12 @@ namespace MapReferenceToPaper
                                 paperDoi = mappedReference.MappedPaper.Value<long>("FamId").ToString();
                             }
 
+                            // SPECIAL CASE: If there is an exact match for DOI, override confidence score to a 1, as DOI is generally 1:1
+                            if(mappedReference.MappedReference.Contains("<attr confidence=\"1\" name=\"academic#DOI\">"))
+                            {
+                                mappedReference.PercentOfReferenceMapped = 1.0;
+                            }
+
                             // Output mapping data + original row columns
                             var output = $"{mappedReference.PercentOfReferenceMapped}\t{mappedReference.MappedReference}\t{mappedReference.MappedPaper.Value<long>("Id")}\t{paperFamilyId}\t{paperDoi}\t{paperPubMed}\t{input}";
 
@@ -93,7 +99,7 @@ namespace MapReferenceToPaper
 
                             outputFile.WriteLine(output);
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
                             Console.WriteLine("EXCEPTION WHEN PROCESSING:");
                             Console.WriteLine(input);
@@ -119,7 +125,7 @@ namespace MapReferenceToPaper
                 interpretationCount: 1,
                 entityCount: 1,
                 attributes: attributesToMap + "," + attributesToReturn,
-                
+
                 // NOTE: Longer timeouts can sometimes provide better quality interpretations, though generally 500ms is sufficient for most reference strings
                 timeout: 500);
 
@@ -309,7 +315,7 @@ namespace MapReferenceToPaper
             }
 
             // If the source contains an exact match, skip fuzzy matching as we already have what we need
-            if (source.Contains(target))
+            if (Regex.IsMatch(source, $"\\b{Regex.Escape(target)}\\b"))
             {
                 return new Tuple<double, string>(1, target);
             }
