@@ -2,7 +2,7 @@
 page_type: sample
 languages:
 - python
-- USQL
+- usql
 description: Sample code to retrieve COVID-19 data from Microsoft Academic Graph resources
 ---
 
