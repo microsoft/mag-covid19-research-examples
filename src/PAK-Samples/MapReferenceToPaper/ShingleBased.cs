@@ -49,8 +49,8 @@ namespace MapReferenceToPaper
         private static readonly Regex SPACE_REG = new Regex("\\s+");
 
         /// <summary> 
+        /// Create new instance of Shingle Based string comparison class w/custom ngram size
         /// </summary>
-        /// <param name="k"></param>
         /// <exception cref="ArgumentOutOfRangeException">If k is less than or equal to 0.</exception>
         protected ShingleBased(int k)
         {
@@ -62,8 +62,14 @@ namespace MapReferenceToPaper
             this.k = k;
         }
 
+        /// <summary>
+        /// Create new instance of Shingle Based string comparison class w/default ngram size of 3
+        /// </summary>
         protected ShingleBased() : this(DEFAULT_K) { }
 
+        /// <summary>
+        /// Generates the ngram profile for a string
+        /// </summary>
         protected IDictionary<string, int> GetProfile(string s)
         {
             var shingles = new Dictionary<string, int>();

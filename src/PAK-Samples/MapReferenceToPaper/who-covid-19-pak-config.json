@@ -15,5 +15,4 @@
     "doi": 10
   },
   "OutputColumns": [ "score", "mapping", "id", "doi", "familyId", "pubmedId" ]
-
 }

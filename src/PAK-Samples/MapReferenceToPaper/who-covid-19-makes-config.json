@@ -1,5 +1,5 @@
 {
-  "InterpretBaseUrl": "http://{instance_name}.westuscloudapp.azure.com/interpret?",
+  "InterpretBaseUrl": "http://{instance_name}.westus.cloudapp.azure.com/interpret?",
   "EvaluateBaseUrl": "http://{instance_name}.westus.cloudapp.azure.com/evaluate?",
   "InterpretTimeout": 2000,
   "ApiRequestConcurrency": 1,
