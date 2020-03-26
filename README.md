@@ -54,21 +54,18 @@ or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-expl
 
 [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-exploration-service/) - Knowledge API (self-hosted on Azure)
 
-## DATA
+## Official data sets linked to MAG
 
-- [WHO, PubMed Id to MAG ID mapping file](./src/data/CORD19-MappedToMAG-03-06-2020.tsv)
+* [World Health Organization: Global research on coronavirus disease (COVID-19)](./src/data/README.md#linked-who-covid-19-data-schema)
+* [COVID-19 Open Research Dataset (CORD-19)](./src/data/README.md#linked-cord-19-data-schema)
 
-## MAG Samples
+## MAG samples
 
 - [Network Similarity package](./src/MAG-Samples/NetworkSimilaritySample/readme.md)
 - [COVID-19 impact on Computer Science and related conferences](./src/MAG-Samples/impact-of-covid19-on-the-computer-science-research-community/readme.md) - [(Blog post)](https://www.microsoft.com/en-us/research/project/academic/articles/impact-of-covid-19-on-computer-science-research-community)
 
 
-## MAKES Samples
-
-- TBD
-
-## Project Academic Knowledge API Samples
+## MAKES / Project Academic Knowledge (PAK) API samples
 
 - [Tool for mapping reference strings to MAG paper IDs](./src/PAK-Samples/MapReferenceToPaper/readme.md)
 
