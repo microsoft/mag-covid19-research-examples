@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MapReferenceToPaper
 {
@@ -14,6 +15,50 @@ namespace MapReferenceToPaper
     /// </summary>
     public static class StringExtensions
     {
+        /// <summary>
+        /// Find source substring that is most similar to target string based on Jaccard distance
+        /// </summary>
+        /// <param name="source">Source string to find substring in</param>
+        /// <param name="target">Target string to use for finding best substring</param>
+        /// <returns>Tuple with the best substring and its inverse Jaccard distance from target string</returns>
+        public static Tuple<double, string> FindBestSubstring(this string source, string target)
+        {
+            // If either input is empty return null
+            if (string.IsNullOrWhiteSpace(source) || string.IsNullOrWhiteSpace(target))
+            {
+                return null;
+            }
+
+            // If the source contains an exact match, skip fuzzy matching as we already have what we need
+            if (Regex.IsMatch(source, $"\\b{Regex.Escape(target)}\\b"))
+            {
+                return new Tuple<double, string>(1, target);
+            }
+
+            // Break target into words
+            var targetWords = target.Split(' ');
+
+            // Generate source n-grams of target word count +/- 1
+            var sourceNgrams = source.CreateStringWordNgrams(Math.Max(targetWords.Length - 1, 1), targetWords.Length + 1);
+
+            // Iterate through each n-gram to find the best match based on Jaccard distance w/greater n-gram length as a tie-breaker
+            double bestDistance = 0;
+            var nearestSubstring = string.Empty;
+            foreach (var ngram in sourceNgrams)
+            {
+                var cos = new Cosine();
+
+                var distance = cos.Similarity(target, ngram);
+                if (distance > bestDistance || (distance == bestDistance && ngram.Length > nearestSubstring.Length))
+                {
+                    nearestSubstring = ngram;
+                    bestDistance = distance;
+                }
+            }
+
+            return new Tuple<double, string>(bestDistance, nearestSubstring);
+        }
+
         /// <summary>
         /// Calculates the Jaccard distance for two strings
         /// </summary>

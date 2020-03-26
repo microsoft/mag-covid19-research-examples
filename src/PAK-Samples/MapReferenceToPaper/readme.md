@@ -4,7 +4,9 @@ This folder contains sample code for generating academic reference strings from 
 
 ## Prerequisites
 
-* Free subscription for the [Project Academic Knowledge](https://msr-apis.portal.azure-api.net/products/project-academic-knowledge) Academic Search API
+* One of the following:
+  * Free subscription for the [Project Academic Knowledge (PAK)](https://msr-apis.portal.azure-api.net/products/project-academic-knowledge) Academic Search API 
+  * [Microsoft Academic Knowledge Exploration Service (MAKES)](https://docs.microsoft.com/en-us/academic-services/knowledge-exploration-service/) API instance 
 * C# compiler (Visual Studio or Visual Studio Code recommended)
 
 ## Building the project in Visual Studio
@@ -15,24 +17,35 @@ This folder contains sample code for generating academic reference strings from 
 
 ## Mapping sample WHO data
 
-The project is pre-configured use the sample 2020-03-20-WorldHealthOrganization-COVID-19-Full-Database file, which is a snapshot of COVID-19 research taken from [WHO's website](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov).
+The project is pre-configured use the sample-input.txt file, which is a snapshot of COVID-19 research taken from [WHO's website](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov).
 
-To generate the mappings:
+### To generate mappings using PAK
+
 1. Open a Windows command prompt by opening the Start menu, typing "cmd" and clicking the "Command Prompt" application
 1. Navigate to the directory where you downloaded/cloned the sample project
-1. Navigate to the bin/Release directory and execute the following command, replacing "project_academic_knowledge_subscription_key" with your subscription key for Project Academic Knowledge (found at https://msr-apis.portal.azure-api.net/developer)
+1. Modify the who-covid-19-pak-config.json file and replace "{subscription_key}" with your PAK subscription key (found at https://msr-apis.portal.azure-api.net/developer) in both the InterpretBaseUrl and EvaluateBaseUrl properties
+1. Navigate to the bin/Release directory and execute the following command
 
 ```
-MapReferenceToPaper.exe ..\..\sampleData\2020-03-20-WorldHealthOrganization-COVID-19-Full-Database.txt mapped.txt project_academic_knowledge_subscription_key "Ti,AA.AuN,C.CN,J.JN,Y,DOI,V,I,FP,LP" "Id,DOI,S,FamId" "0,1,3,5,6,7,8,10"
+MapReferenceToPaper.exe ..\..\sampleData\sample-input.txt mapped.txt ..\..\who-covid-19-pak-config.json
 ```
 
-The program processes one row at a time from the sample data, echoing the mapping to both the console and a mapped.txt file in bin/Release.
+### To generate mappings using MAKES
 
-The tool generates the following additional columns that precede the existing columns in the output rows:
+1. Open a Windows command prompt by opening the Start menu, typing "cmd" and clicking the "Command Prompt" application
+1. Navigate to the directory where you downloaded/cloned the sample project
+1. Modify the who-covid-19-makes-config.json file and replace "{instance_name}" with your MAKES instance name in both the InterpretBaseUrl and EvaluateBaseUrl properties
+1. Navigate to the bin/Release directory and execute the following command
+
+```
+MapReferenceToPaper.exe ..\..\sampleData\sample-input.txt mapped.txt ..\..\who-covid-19-makes-config.json
+```
+
+The program processes one row at a time from the sample data, echoing the mapping to both the console and the mapped.txt file in bin/Release. It adds the following columns:
 
 Name | Description
 --- | ---
-MagMappingConfidence | A confidence value that represents the % of reference string that was able to be mapped to the top entity result
+MagMappingScore | A confidence value that represents the % of reference string that was able to be mapped to the top entity result
 MagMappedLabels | A normalized version of the reference string that contains embedded XML tags that describe how different terms were mapped
 MagId | The Microsoft Academic paper ID that was mapped
 MagFamilyId | The Microsoft Academic paper family ID of the paper that was mapped if available
@@ -49,12 +62,17 @@ Parameter | Description | Example
 --- | --- | ---
 Input | Input TSV file containing tab-seprated columns | input.txt
 Output | Destination file to output mapping + original column data to | output.txt
-Subscription key | The [Project Academic Knowledge subscription key](https://msr-apis.portal.azure-api.net/developer) to use | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-Attributes to map | A comma-delimited list of [paper entity attributes](https://docs.microsoft.com/en-us/academic-services/project-academic-knowledge/reference-paper-entity-attributes) to use when mapping the reference string | Ti,AA.AuN,C.CN,J.JN,Y,DOI,V,I,FP,LP
-Additional attributes | A comma-delimted list of additonal [paper entity attributes](https://docs.microsoft.com/en-us/academic-services/project-academic-knowledge/reference-paper-entity-attributes) to return for each mapped entity | Id,DOI,S,FamId
-Columns to use | A comma-delimited list of zero-based column indexes to concatenate together from each input row for use as the reference string that is mapped | 0,1,3,5,6,7,8,10 
+Configuration file | JSON file containing configuration options (see below) | config.json
 
-Example:
-```
-MapReferenceToPaper.exe ..\..\sampleData\2020-03-20-WorldHealthOrganization-COVID-19-Full-Database.txt mapped.txt project_academic_knowledge_subscription_key "Ti,AA.AuN,C.CN,J.JN,Y,DOI,V,I,FP,LP" "Id,DOI,S,FamId" "0,1,3,5,6,7,8,10"
-```
+## Configuration options
+
+Option | Description
+--- | ---  | ---
+InterpretBaseUrl | The base URL to use for calling the Interpret method
+EvaluateBaseUrl | The base URL to use for calling the Interpret method
+InterpretTimeout | Maximum interpret API method call duration
+ApiRequestConcurrency | Number of concurrent API requests to make when (i.e. number of rows to process in parallel)
+InputColumnMapping | Defines the different types of academic data available in the input TSV file and their column index (zero-based). Available types: title, authors, year, venue, volume, issue, firstPage, lastPage, doi
+OutputColumsn | The academic paper attributes to add to the output TSV. Available attributes (see https://docs.microsoft.com/en-us/academic-services/project-academic-knowledge/reference-paper-entity-attributes): confidence, mapping, id, familyId, pubmedId, title, authors, year, venue, volume, issue, firstPage, lastPage, doi
+
+For example configurations see [who-covid-19-makes-config.json](who-covid-19-makes-config.json) and [who-covid-19-pak-config.json](who-covid-19-pak-config.json).

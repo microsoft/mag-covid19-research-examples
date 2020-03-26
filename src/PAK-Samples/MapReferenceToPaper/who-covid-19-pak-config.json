@@ -1,0 +1,19 @@
+{
+  "InterpretBaseUrl": "https://api.labs.cognitive.microsoft.com/academic/v1.0/interpret?subscription-key={subscription_key}&",
+  "EvaluateBaseUrl": "https://api.labs.cognitive.microsoft.com/academic/v1.0/evaluate?subscription-key={subscription_key}&",
+  "InterpretTimeout": 2000,
+  "ApiRequestConcurrency": 1,
+  "InputColumnMapping": {
+    "title": 0,
+    "authors": 1,
+    "year": 3,
+    "venue": 5,
+    "volume": 6,
+    "issue": 7,
+    "firstPage": 8,
+    "lastPage": 8,
+    "doi": 10
+  },
+  "OutputColumns": [ "score", "mapping", "id", "doi", "familyId", "pubmedId" ]
+
+}
