@@ -67,7 +67,7 @@ Configuration file | JSON file containing configuration options (see below) | co
 ## Configuration options
 
 Option | Description
---- | ---  | ---
+--- | ---  
 InterpretBaseUrl | The base URL to use for calling the Interpret method
 EvaluateBaseUrl | The base URL to use for calling the Interpret method
 InterpretTimeout | Maximum interpret API method call duration
