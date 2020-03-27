@@ -14,8 +14,8 @@ These files contain metadata to map Microsoft Academic Graph (MAG) paper entitie
 
 File/folder | Description
 --- | ---
-`2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv` | 2020-03-23 [WHO COVID-19 database](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov) linked to 2020-03-13 MAG
-`2020-03-20-CORD-19-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv` | 2020-03-20 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) linked to 2020-03-13 MAG
+[2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv](./2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv) | 2020-03-23 [WHO COVID-19 database](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov) linked to 2020-03-13 MAG
+[2020-03-20-CORD-19-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv](./2020-03-20-CORD-19-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv) | 2020-03-20 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) linked to 2020-03-13 MAG
 
 ## Linked WHO COVID-19 data schema
 
