@@ -69,7 +69,7 @@ Configuration file | JSON file containing configuration options (see below) | co
 Option | Description
 --- | ---  
 InterpretBaseUrl | The base URL to use for calling the Interpret method
-EvaluateBaseUrl | The base URL to use for calling the Interpret method
+EvaluateBaseUrl | The base URL to use for calling the Evaluate method
 InterpretTimeout | Maximum interpret API method call duration
 ApiRequestConcurrency | Number of concurrent API requests to make when (i.e. number of rows to process in parallel)
 InputColumnMapping | Defines the different types of academic data available in the input TSV file and their column index (zero-based). Available types: title, authors, year, venue, volume, issue, firstPage, lastPage, doi
