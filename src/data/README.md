@@ -12,10 +12,10 @@ These files contain metadata to map Microsoft Academic Graph (MAG) paper entitie
 
 ## Contents
 
-File/folder | Description
---- | ---
-[2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv](./2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv) | 2020-03-23 [WHO COVID-19 database](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov) linked to 2020-03-13 MAG
-[2020-03-20-CORD-19-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv](./2020-03-20-CORD-19-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv) | 2020-03-20 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) linked to 2020-03-13 MAG
+Posted | Type | File/folder | Description
+--- | --- | --- | ---
+03/26/2020 | WHO | [2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv](./2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv) | 2020-03-23 [WHO COVID-19 database](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov) linked to 2020-03-13 MAG
+03/27/2020 | CORD-19 | [2020-03-27-CORD-19-MappedTo-2020-03-23-MicrosoftAcademicGraph.csv](./2020-03-27-CORD-19-MappedTo-2020-03-23-MicrosoftAcademicGraph.csv) | 2020-03-27 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) linked to 2020-03-23 MAG
 
 ## Linked WHO COVID-19 data schema
 
@@ -48,26 +48,26 @@ Column # | Name | Source | Description
 
 Column # | Name | Source | Description
 --- | --- | --- | ---
-1 | sha | CORD-19 | 40-character sha1 of the PDF
-2 | source_x | CORD-19 | Paper source
-3 | title | CORD-19 | Paper title
-4 | doi | CORD-19 | Paper Digital Object Identifier (DOI)
-5 | pmcid | CORD-19 | PubMed Central reference number (PMCID)
-6 | pubmed_id | CORD-19 | PubMed reference number (PMID)
-7 | license | CORD-19 | Fulltext licensing (see [CORD-19 site](https://pages.semanticscholar.org/coronavirus-research))
-8 | abstract | CORD-19 | Paper abstract text
-9 | publish_time | CORD-19 | Paper publication date
-10 | authors | CORD-19 | List of paper author names
-11 | journal | CORD-19 | Paper publication journal
-12 | Microsoft Academic Paper ID | CORD-19 | MAG paper entity ID supplied by CORD-19
-13 | WHO #Covidence | CORD-19 | Unique paper ID associated with WHO COVID-19 data set
-14 | has_full_text | CORD-19 | Indicates if paper has full text in CORD-19 data set
-15 | full_text_file | CORD-19 | Indicates licensing terms of full text in CORD-19 data set
-16 | MagMappingScore | MAG | Score that reflects the accuracy of the mapping based on how much of the paper metadata could be linked to MAG
-17 | MagPaperId | MAG | MAG paper entity ID supplied by Microsoft
-18 | MagPaperFamilyId | MAG | MAG paper entity family ID
-19 | MagDoi | MAG | MAG paper entity DOI
-20 | MagPubMedId | MAG | MAG paper entity pubmed ID
+1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
+2 | sha | CORD-19 | 40-character sha1 of the PDF
+3 | source_x | CORD-19 | Paper source
+4 | title | CORD-19 | Paper title
+5 | doi | CORD-19 | Paper Digital Object Identifier (DOI)
+6 | pmcid | CORD-19 | PubMed Central reference number (PMCID)
+7 | pubmed_id | CORD-19 | PubMed reference number (PMID)
+8 | license | CORD-19 | Fulltext licensing (see [CORD-19 site](https://pages.semanticscholar.org/coronavirus-research))
+9 | abstract | CORD-19 | Paper abstract text
+10 | publish_time | CORD-19 | Paper publication date
+11 | authors | CORD-19 | List of paper author names
+12 | journal | CORD-19 | Paper publication journal
+13 | Microsoft Academic Paper ID | CORD-19 | MAG paper entity ID supplied by CORD-19
+14 | WHO #Covidence | CORD-19 | Unique paper ID associated with WHO COVID-19 data set
+15 | has_full_text | CORD-19 | Indicates if paper has full text in CORD-19 data set
+16 | full_text_file | CORD-19 | Indicates licensing terms of full text in CORD-19 data set
+17 | url | CORD-19 | Paper full-text URL
+18 | MagMappingScore | MAG | Score that reflects the accuracy of the mapping based on how much of the paper metadata could be linked to MAG
+19 | MagPaperId | MAG | MAG paper entity ID supplied by Microsoft
+20 | MagPaperFamilyId | MAG | MAG paper entity family ID
 21 | MagMappedLabels | MAG | String used for mapping the paper metadata to MAG paper entity with embedded XML labels indicating what terms were mapped to what fields, and the confidence of that mapping
 
 ## Contributing
