@@ -15,8 +15,8 @@ These files contain metadata to map Microsoft Academic Graph (MAG) paper entitie
 Posted | Type | File/folder | Description
 --- | --- | --- | ---
 03/26/2020 | WHO | [2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv](./2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv) | 2020-03-23 [WHO COVID-19 database](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov) linked to 2020-03-13 MAG
-04/03/2020 | CORD-19 | [2020-04-03-CORD-19-MappedTo-2020-03-27-MAG-Backfill.csv](./2020-04-03-CORD-19-MappedTo-2020-03-27-MAG-Backfill.csv) | 2020-04-03 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage
-04/03/2020 | CORD-19 | [2020-04-03-CORD-19-MappedTo-2020-03-27-MicrosoftAcademicGraph.csv](./2020-04-03-CORD-19-MappedTo-2020-03-27-MicrosoftAcademicGraph.csv) | 2020-04-03 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
+04/11/2020 | CORD-19 | [2020-04-10-CORD-19-MappedTo-2020-04-03-MAG-Backfill.csv](./2020-04-10-CORD-19-MappedTo-2020-04-03-MAG-Backfill.csv) | 2020-04-10 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage
+04/11/2020 | CORD-19 | [2020-04-10-CORD-19-MappedTo-2020-04-03-MAG.csv](./2020-04-10-CORD-19-MappedTo-2020-04-03-MAG.csv) | 2020-04-10 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
 
 ## Linked WHO COVID-19 data schema
 
