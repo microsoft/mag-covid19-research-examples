@@ -3,6 +3,7 @@
   "EvaluateBaseUrl": "https://api.labs.cognitive.microsoft.com/academic/v1.0/evaluate?subscription-key={subscription_key}&",
   "InterpretTimeout": 2000,
   "ApiRequestConcurrency": 1,
+  "CandidatesPerRow":  1,
   "InputColumnMapping": {
     "title": 0,
     "authors": 1,

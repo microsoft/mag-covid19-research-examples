@@ -25,12 +25,14 @@ namespace MapReferenceToPaper
         /// <summary>
         /// Maximum interpret API method call duration
         /// </summary>
-        public int InterpretTimeout { get; set; }
+        public int InterpretTimeout { get; set; } = 2000;
 
         /// <summary>
         /// Number of concurrent API requests to make when (i.e. number of rows to process in parallel)
         /// </summary>
-        public int ApiRequestConcurrency { get; set; }
+        public int ApiRequestConcurrency { get; set; } = 1;
+
+        public int CandidatesPerRow { get; set; } = 1;
 
         /// <summary>
         /// Defines the different types of academic data available in the input TSV file and their column index (zero-based)

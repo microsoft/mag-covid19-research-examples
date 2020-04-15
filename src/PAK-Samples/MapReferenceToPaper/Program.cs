@@ -22,6 +22,8 @@ namespace MapReferenceToPaper
 
     public class Program
     {
+        public static HttpClient client = new HttpClient();
+
         public static Config configuration;
 
         static void Main(string[] args)
@@ -75,14 +77,19 @@ namespace MapReferenceToPaper
                             {
                                 try
                                 {
-                                    ReferenceMapping mappedReference = null;
+                                    List<ReferenceMapping> mappedReferences = null;
                                     var split = inputCopy.Split('\t');
+
+                                    string doiColumn = string.Empty;
 
                                     // If DOI is present in the input, first try to match it directly against papers using Evaluate API as it's fast and highly accurate
                                     if (configuration.InputColumnMapping.ContainsKey("doi") && !string.IsNullOrEmpty(split[configuration.InputColumnMapping["doi"]]))
                                     {
-                                        var doiColumn = split[configuration.InputColumnMapping["doi"]];
+                                        doiColumn = split[configuration.InputColumnMapping["doi"]].ToUpperInvariant();
+                                    }
 
+                                    if(!string.IsNullOrEmpty(doiColumn))
+                                    { 
                                         var evaluateResult =
                                             EvaluateQueryExpression(
                                                 expression: $"DOI='{doiColumn}'",
@@ -95,19 +102,21 @@ namespace MapReferenceToPaper
 
                                         if (evaluateResultObject["entities"] != null && evaluateResultObject["entities"].Any())
                                         {
-                                            mappedReference =
+                                            mappedReferences = new List<ReferenceMapping>();
+
+                                            mappedReferences.Add(
                                                 MapReferenceToPaperEntity(
                                                     doiColumn,
                                                     doiColumn,
                                                     doiColumn,
                                                     new HashSet<string>(attributesToMap.Split(',')),
                                                     attributesToReturn,
-                                                    evaluateResultObject["entities"].First());
+                                                    evaluateResultObject["entities"].First()));
                                         }
                                     }
 
                                     // If DOI map failed, do full reference matching
-                                    if (mappedReference == null)
+                                    if (mappedReferences == null)
                                     {
                                         // Generate reference string that will be mapped using the data in the specified columns (sans last column)
                                         var referenceString = string.Empty;
@@ -120,10 +129,13 @@ namespace MapReferenceToPaper
                                         }
 
                                         // Map the reference
-                                        mappedReference = MapReferenceToPaper(referenceString, attributesToMap, attributesToReturn);
+                                        mappedReferences = MapReferenceToPaper(referenceString, attributesToMap, attributesToReturn, configuration.CandidatesPerRow);
                                     }
 
-                                    resultQueue.Enqueue($"{inputCopy}\t{GetOutputColumns(mappedReference)}");
+                                    foreach (var mappedReference in mappedReferences)
+                                    {
+                                        resultQueue.Enqueue($"{inputCopy}\t{GetOutputColumns(mappedReference)}");
+                                    }
                                 }
                                 catch (Exception ex)
                                 {
@@ -388,12 +400,12 @@ namespace MapReferenceToPaper
         /// <summary>
         /// Maps an academic reference string to a Microsoft Academic paper entity using Project Academic Knowledge Interpret method
         /// </summary>
-        public static ReferenceMapping MapReferenceToPaper(string referenceString, string attributesToMap, string attributesToReturn)
+        public static List<ReferenceMapping> MapReferenceToPaper(string referenceString, string attributesToMap, string attributesToReturn, int numberOfCandidates = 1)
         {
             var resultString = GetQueryInterpretations(
                 query: referenceString,
                 complete: false,
-                interpretationCount: 1,
+                interpretationCount: 5,
                 entityCount: 5,
                 attributes: attributesToMap + "," + attributesToReturn);
 
@@ -403,21 +415,29 @@ namespace MapReferenceToPaper
             {
                 var toMap = new HashSet<string>(attributesToMap.Split(','));
 
-                // We only care about the first interpretation
-                var firstInterpretation = result["interpretations"].First();
-
                 // Extract relevance fields from JSON response
                 var interpretedQuery = result.Value<string>("query");
                 var newParse = interpretedQuery;
                 var candidates = new List<ReferenceMapping>();
 
-                foreach (var entity in firstInterpretation["rules"].First()["output"]["entities"])
+                foreach (var interpretation in result["interpretations"])
                 {
-                    candidates.Add(MapReferenceToPaperEntity(referenceString, interpretedQuery, newParse, toMap, attributesToReturn, entity));
+                    foreach (var entity in interpretation["rules"].First()["output"]["entities"])
+                    {
+                        candidates.Add(MapReferenceToPaperEntity(referenceString, interpretedQuery, newParse, toMap, attributesToReturn, entity));
+                    }
                 }
 
                 // Return only the most promising candidate
-                return candidates.OrderByDescending(candidate => candidate.PercentOfReferenceMapped).First();
+                return
+                    candidates
+                    .GroupBy(candidate => GetAttributeIfExists(candidate.MappedPaper, "Id"))
+                    .Select(candidateGroup => 
+                        candidateGroup
+                        .OrderByDescending(candidate => candidate.PercentOfReferenceMapped)
+                        .First())
+                    .OrderByDescending(candidate => candidate.PercentOfReferenceMapped)
+                    .Take(numberOfCandidates).ToList();
             }
 
             return null;
@@ -563,8 +583,6 @@ namespace MapReferenceToPaper
             string attributes = ""
             )
         {
-            HttpClient client = new HttpClient();
-
             var queryString = HttpUtility.ParseQueryString(string.Empty);
             var encodedQuery = HttpUtility.UrlEncode(query);
 
@@ -595,8 +613,6 @@ namespace MapReferenceToPaper
             string attributes = ""
             )
         {
-            HttpClient client = new HttpClient();
-
             var queryString = HttpUtility.ParseQueryString(string.Empty);
 
             // Request parameters

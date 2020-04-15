@@ -3,6 +3,7 @@
   "EvaluateBaseUrl": "http://{instance_name}.westus.cloudapp.azure.com/evaluate?",
   "InterpretTimeout": 2000,
   "ApiRequestConcurrency": 1,
+  "CandidatesPerRow": 1,
   "InputColumnMapping": {
     "title": 0,
     "authors": 1,
