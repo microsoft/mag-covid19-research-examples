@@ -72,7 +72,7 @@ InterpretBaseUrl | The base URL to use for calling the Interpret method
 EvaluateBaseUrl | The base URL to use for calling the Evaluate method
 InterpretTimeout | Maximum interpret API method call duration
 ApiRequestConcurrency | Number of concurrent API requests to make (i.e. number of rows to process in parallel)
-CandidatesPerRow | Number of parse candidates to generate per row. A value greater than 1 means each row will appear that number of times in the output with a different matching reference candidate.
+MaximumCandidatesPerRow | Maximum number of parse candidates to generate per row. A value greater than 1 means each row will appear that number of times in the output with a different matching reference candidate.
 InputColumnMapping | Defines the different types of academic data available in the input TSV file and their column index (zero-based). Available types: title, authors, year, venue, volume, issue, firstPage, lastPage, doi
 OutputColumsn | The academic paper attributes to add to the output TSV. Available attributes (see https://docs.microsoft.com/en-us/academic-services/project-academic-knowledge/reference-paper-entity-attributes): confidence, mapping, id, familyId, pubmedId, title, authors, year, venue, volume, issue, firstPage, lastPage, doi
 

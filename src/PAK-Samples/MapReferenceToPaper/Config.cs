@@ -32,7 +32,7 @@ namespace MapReferenceToPaper
         /// </summary>
         public int ApiRequestConcurrency { get; set; } = 1;
 
-        public int CandidatesPerRow { get; set; } = 1;
+        public int MaximumCandidatesPerRow { get; set; } = 1;
 
         /// <summary>
         /// Defines the different types of academic data available in the input TSV file and their column index (zero-based)

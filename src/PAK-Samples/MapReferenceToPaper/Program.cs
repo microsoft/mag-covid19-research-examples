@@ -129,7 +129,7 @@ namespace MapReferenceToPaper
                                         }
 
                                         // Map the reference
-                                        mappedReferences = MapReferenceToPaper(referenceString, attributesToMap, attributesToReturn, configuration.CandidatesPerRow);
+                                        mappedReferences = MapReferenceToPaper(referenceString, attributesToMap, attributesToReturn, configuration.MaximumCandidatesPerRow);
                                     }
 
                                     foreach (var mappedReference in mappedReferences)
