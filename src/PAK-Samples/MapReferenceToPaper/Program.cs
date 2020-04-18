@@ -88,8 +88,8 @@ namespace MapReferenceToPaper
                                         doiColumn = split[configuration.InputColumnMapping["doi"]].ToUpperInvariant();
                                     }
 
-                                    if(!string.IsNullOrEmpty(doiColumn))
-                                    { 
+                                    if (!string.IsNullOrEmpty(doiColumn))
+                                    {
                                         var evaluateResult =
                                             EvaluateQueryExpression(
                                                 expression: $"DOI='{doiColumn}'",
@@ -139,6 +139,9 @@ namespace MapReferenceToPaper
                                 }
                                 catch (Exception ex)
                                 {
+                                    // Output row without any mapping
+                                    resultQueue.Enqueue($"{inputCopy}\t{GetOutputColumns(null)}");
+
                                     Console.WriteLine("EXCEPTION WHEN PROCESSING:");
                                     Console.WriteLine(inputCopy);
                                     Console.WriteLine();
@@ -166,6 +169,21 @@ namespace MapReferenceToPaper
                             Thread.Sleep(50);
                         }
                     }
+
+                    while (activeThreadCount > 0)
+                    {
+                        // Clear out queue
+                        while (resultQueue.TryDequeue(out var output))
+                        {
+                            Console.WriteLine($"{++processedCount}: {output}");
+                            Console.WriteLine();
+
+                            outputFile.WriteLine(output);
+                        }
+
+                        Thread.Sleep(50);
+                    }
+
                 }
             }
         }
@@ -309,87 +327,107 @@ namespace MapReferenceToPaper
         {
             var outputColumns = new List<string>();
 
-            // SPECIAL CASE: If there is an exact match for DOI, override confidence score to a 1, as DOI is generally 1:1
-            if (mappedReference.MappedReference.Contains("<attr confidence=\"1\" name=\"academic#DOI\">"))
+            if (mappedReference == null)
             {
-                mappedReference.PercentOfReferenceMapped = 1.0;
-            }
-
-            foreach (var attribute in configuration.OutputColumns)
-            {
-                switch (attribute)
+                foreach (var attribute in configuration.OutputColumns)
                 {
-                    case "score":
-                        outputColumns.Add(mappedReference.PercentOfReferenceMapped.ToString());
-                        break;
+                    switch (attribute)
+                    {
+                        case "score":
+                            outputColumns.Add("0");
+                            break;
 
-                    case "mapping":
-                        outputColumns.Add(mappedReference.MappedReference);
-                        break;
+                        default:
+                            outputColumns.Add("");
+                            break;
+                    }
+                }
+            }
+            else
+            {
 
-                    case "id":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "Id"));
-                        break;
+                // SPECIAL CASE: If there is an exact match for DOI, override confidence score to a 1, as DOI is generally 1:1
+                if (mappedReference.MappedReference.Contains("<attr confidence=\"1\" name=\"academic#DOI\">"))
+                {
+                    mappedReference.PercentOfReferenceMapped = 1.0;
+                }
 
-                    case "familyId":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "FamId"));
-                        break;
+                foreach (var attribute in configuration.OutputColumns)
+                {
+                    switch (attribute)
+                    {
+                        case "score":
+                            outputColumns.Add(mappedReference.PercentOfReferenceMapped.ToString());
+                            break;
 
-                    case "pubmedId":
-                        if (mappedReference.MappedPaper["S"] != null)
-                        {
-                            if (mappedReference.MappedPaper["S"].Any(a => a.Value<string>("U").StartsWith("https://www.ncbi.nlm.nih.gov/pubmed/")))
+                        case "mapping":
+                            outputColumns.Add(mappedReference.MappedReference);
+                            break;
+
+                        case "id":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "Id"));
+                            break;
+
+                        case "familyId":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "FamId"));
+                            break;
+
+                        case "pubmedId":
+                            if (mappedReference.MappedPaper["S"] != null)
                             {
-                                outputColumns.Add(mappedReference.MappedPaper["S"].First(a => a.Value<string>("U").StartsWith("https://www.ncbi.nlm.nih.gov/pubmed/")).Value<string>("U").Replace("https://www.ncbi.nlm.nih.gov/pubmed/", ""));
+                                if (mappedReference.MappedPaper["S"].Any(a => a.Value<string>("U").StartsWith("https://www.ncbi.nlm.nih.gov/pubmed/")))
+                                {
+                                    outputColumns.Add(mappedReference.MappedPaper["S"].First(a => a.Value<string>("U").StartsWith("https://www.ncbi.nlm.nih.gov/pubmed/")).Value<string>("U").Replace("https://www.ncbi.nlm.nih.gov/pubmed/", ""));
+                                }
                             }
-                        }
-                        break;
+                            break;
 
-                    case "title":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "DN"));
-                        break;
+                        case "title":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "DN"));
+                            break;
 
-                    case "authors":
-                        var authors = new List<string>();
+                        case "authors":
+                            var authors = new List<string>();
 
-                        if (mappedReference.MappedPaper["AA"] != null)
-                        {
-                            foreach (var author in mappedReference.MappedPaper["AA"])
+                            if (mappedReference.MappedPaper["AA"] != null)
                             {
-                                authors.Add(GetAttributeIfExists(mappedReference.MappedPaper, "DAuN"));
+                                foreach (var author in mappedReference.MappedPaper["AA"])
+                                {
+                                    authors.Add(GetAttributeIfExists(mappedReference.MappedPaper, "DAuN"));
+                                }
                             }
-                        }
 
-                        outputColumns.Add(string.Join(", ", authors));
-                        break;
+                            outputColumns.Add(string.Join(", ", authors));
+                            break;
 
-                    case "year":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "Y"));
-                        break;
+                        case "year":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "Y"));
+                            break;
 
-                    case "venue":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "VFN"));
-                        break;
+                        case "venue":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "VFN"));
+                            break;
 
-                    case "volume":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "V"));
-                        break;
+                        case "volume":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "V"));
+                            break;
 
-                    case "issue":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "I"));
-                        break;
+                        case "issue":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "I"));
+                            break;
 
-                    case "firstPage":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "FP"));
-                        break;
+                        case "firstPage":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "FP"));
+                            break;
 
-                    case "lastPage":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "LP"));
-                        break;
+                        case "lastPage":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "LP"));
+                            break;
 
-                    case "doi":
-                        outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "DOI"));
-                        break;
+                        case "doi":
+                            outputColumns.Add(GetAttributeIfExists(mappedReference.MappedPaper, "DOI"));
+                            break;
+                    }
                 }
             }
 
@@ -432,7 +470,7 @@ namespace MapReferenceToPaper
                 return
                     candidates
                     .GroupBy(candidate => GetAttributeIfExists(candidate.MappedPaper, "Id"))
-                    .Select(candidateGroup => 
+                    .Select(candidateGroup =>
                         candidateGroup
                         .OrderByDescending(candidate => candidate.PercentOfReferenceMapped)
                         .First())
