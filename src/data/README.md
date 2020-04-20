@@ -76,7 +76,7 @@ Column # | Name | Source | Description
 Column # | Name | Source | Description
 --- | --- | --- | ---
 1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
-2 | Microsoft Academic Paper ID | CORD-19 | MAG paper entity ID
+2 | Microsoft Academic Paper ID | MAG | MAG paper entity ID
 
 ## Contributing
 
