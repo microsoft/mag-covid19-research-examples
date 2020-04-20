@@ -17,6 +17,7 @@ Posted | Type | File/folder | Description
 03/26/2020 | WHO | [2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv](./2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv) | 2020-03-23 [WHO COVID-19 database](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov) linked to 2020-03-13 MAG
 04/18/2020 | CORD-19 | [2020-04-17-CORD-19-MappedTo-2020-04-10-MAG-Backfill.csv](./2020-04-17-CORD-19-MappedTo-2020-04-10-MAG-Backfill.csv) | 2020-04-17 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage
 04/18/2020 | CORD-19 | [2020-04-17-CORD-19-MappedTo-2020-04-10-MAG.csv](./2020-04-17-CORD-19-MappedTo-2020-04-10-MAG.csv) | 2020-04-17 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
+04/20/2020 | CORD-19 | [2020-04-17-CORD-UID-MappedTo-2020-04-10-MAG-ID.csv](./2020-04-17-CORD-UID-MappedTo-2020-04-10-MAG-ID.csv) | CORD UID from the 2020-04-17 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) mapped to MAG ID
 
 ## Linked WHO COVID-19 data schema
 
@@ -70,6 +71,12 @@ Column # | Name | Source | Description
 19 | MagPaperId | MAG | MAG paper entity ID supplied by Microsoft
 20 | MagPaperFamilyId | MAG | MAG paper entity family ID
 21 | MagMappedLabels | MAG | String used for mapping the paper metadata to MAG paper entity with embedded XML labels indicating what terms were mapped to what fields, and the confidence of that mapping
+
+## Linked CORD UID to MAG ID schema
+Column # | Name | Source | Description
+--- | --- | --- | ---
+1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
+2 | Microsoft Academic Paper ID | CORD-19 | MAG paper entity ID
 
 ## Contributing
 
