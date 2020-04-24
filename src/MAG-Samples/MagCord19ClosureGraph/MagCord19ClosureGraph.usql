@@ -1,0 +1,626 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                
+//  Copyright (c) Microsoft Corporation. All rights reserved.                                     
+//  Licensed under the MIT License.                                                               
+//                                                                                                
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Input Parameters                                                
+//
+// Input parameters that can be overridden by instantiating scripts                               
+// See: https://docs.microsoft.com/en-us/u-sql/variables/declare-variables for details
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// The Azure blob storage account name that contains the Microsoft Academic Graph data to be used by this script
+DECLARE EXTERNAL @In_MagBlobAccount string = ""; // Example: "mymagstore"
+
+// The Azure blob storage container name that contains the Microsoft Academic Graph data to be used by this script
+DECLARE EXTERNAL @In_MagBlobContainer string = ""; // Example: "mag-prod-2020-02-07"
+
+// CORD UID to MAG ID mapping file
+DECLARE EXTERNAL @In_Cord19Mapping string = ""; // Example: "wasb://subgraphs@mymagstore/cord-19-closure/20200417-cord19-20200417-mag/2020-04-17-CORD-UID-MappedTo-2020-04-17-MAG-ID.csv"
+
+// The output path where the subgraph files will be created
+DECLARE EXTERNAL @Out_GraphOutputPath string = ""; // Example: "wasb://subgraphs@mymagstore/cord-19-closure/20200417-cord19-20200417-mag/graph"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Local variables and functions
+//
+// Local varibles and functions used for the script execution
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// The input Uri for the Microsoft Academic Graph data to be used by this script
+DECLARE @inputUri string = "wasb://" + @In_MagBlobContainer + "@" + @In_MagBlobAccount + "/";
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Data Extraction
+//
+// Load academic data using official MAG table functions                                                                                         
+// See https://docs.microsoft.com/en-us/academic-services/graph/tutorial-azure-data-lake-hindex#define-functions-to-extract-mag-data for details 
+//                                                                                                                                               
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@affiliations =
+    Affiliations
+    (
+        @inputUri
+    );
+@authors =
+    Authors
+    (
+        @inputUri
+    );
+@conferenceInstances =
+    ConferenceInstances
+    (
+        @inputUri
+    );
+@conferenceSeries =
+    ConferenceSeries
+    (
+        @inputUri
+    );
+@entityRelatedEntities =
+    EntityRelatedEntities
+    (
+        @inputUri
+    );
+@fieldOfStudyChildren =
+    FieldOfStudyChildren
+    (
+        @inputUri
+    );
+@fieldOfStudyExtendedAttributes =
+    FieldOfStudyExtendedAttributes
+    (
+        @inputUri
+    );
+@fieldsOfStudy =
+    FieldsOfStudy
+    (
+        @inputUri
+    );
+@journals =
+    Journals
+    (
+        @inputUri
+    );
+@paperAbstractsInvertedIndex =
+    PaperAbstractsInvertedIndex
+    (
+        @inputUri
+    );
+@paperAuthorAffiliations =
+    PaperAuthorAffiliations
+    (
+        @inputUri
+    );
+@paperCitationContexts =
+    PaperCitationContexts
+    (
+        @inputUri
+    );
+@paperExtendedAttributes =
+    PaperExtendedAttributes   
+    (
+        @inputUri
+    );
+@paperFieldsOfStudy =
+    PaperFieldsOfStudy
+    (
+        @inputUri
+    );
+@paperRecommendations =
+    PaperRecommendations
+    (
+        @inputUri
+    );
+@paperReferences =
+    PaperReferences
+    (
+        @inputUri
+    );
+@paperResources =
+    PaperResources
+    (
+        @inputUri
+    );
+@paperUrls =
+    PaperUrls
+    (
+        @inputUri
+    );
+@papers =
+    Papers
+    (
+        @inputUri
+    );
+@relatedFieldOfStudy =
+    RelatedFieldOfStudy
+    (
+        @inputUri
+    );
+
+// Generate additional non-nullable columns for specific columns in the default MAG databases.
+// This is required for table join operations later in this script.
+
+@authors =
+    SELECT *,
+            (LastKnownAffiliationId == null? (long) - 1 : LastKnownAffiliationId.Value) AS _LastKnownAffiliationId
+    FROM @authors;
+
+@paperAuthorAffiliations =
+    SELECT *,
+            (AffiliationId == null? (long) - 1 : AffiliationId.Value) AS _AffiliationId
+    FROM @paperAuthorAffiliations;
+
+@papers =
+    SELECT *,
+            (JournalId == null? (long) - 1 : JournalId.Value) AS _JournalId,
+            (ConferenceInstanceId == null? (long) - 1 : ConferenceInstanceId.Value) AS _ConferenceInstanceId,
+            (ConferenceSeriesId == null? (long) - 1 : ConferenceSeriesId.Value) AS _ConferenceSeriesId
+    FROM @papers;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Closure paper selection
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@targetPapers =
+    EXTRACT
+        CordId string,
+        PaperId long
+    FROM @In_Cord19Mapping
+    USING Extractors.Csv(skipFirstNRows:1, silent:false, quoting:true);
+
+// Hop 1
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+    
+@targetPapers =
+    SELECT (int?)0 AS Position, PaperId FROM @targetPapers WHERE PaperId > 0
+    UNION ALL
+    SELECT (int?)1 AS Position, PaperId FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, COUNT() AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+//Hop 2
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)2 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+//Hop 3
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)3 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+//Hop 4
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)4 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+//Hop 5
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)5 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+//Hop 6
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)6 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+//Hop 7
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)7 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+//Hop 8
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)8 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+//Hop 9
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)9 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+//Hop 10
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@moreNewPapers =
+    SELECT DISTINCT PaperId FROM @newPapers AS A
+    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)10 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+//Hop 11
+@newPapers =
+    SELECT B.PaperReferenceId AS PaperId
+    FROM @moreNewPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers 
+    UNION ALL
+    SELECT (int?)11 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
+
+@targetPapers = 
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers GROUP BY PaperId;
+
+// Workaround EstimatedCitation Issue
+@overallCitation =
+    SELECT
+        A.PaperId,
+        COUNT(B.PaperId) AS OverallCitation
+    FROM @targetPapers AS A INNER JOIN @paperReferences AS B 
+    ON A.PaperId == B.PaperReferenceId GROUP BY A.PaperId;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Subgraph Creation                                                           
+// 
+// Apply filtering logic to create a subgraph from MAG.
+// The example below illustrates the graph filtering logic based on papers published in closure subgraph
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@papers =
+    SELECT
+        B.*,
+        (C.OverallCitation == null?0:C.OverallCitation.Value) AS SubGraphCitationCount,
+        A.Position AS Hops
+    FROM @targetPapers AS A 
+    INNER JOIN @papers AS B ON A.PaperId == B.PaperId
+    LEFT OUTER JOIN @overallCitation AS C ON A.PaperId == C.PaperId;
+
+OUTPUT @papers
+TO @Out_GraphOutputPath + "/Papers.txt"
+USING Outputters.Tsv();
+
+@paperAuthorAffiliations =
+    SELECT @paperAuthorAffiliations.*
+    FROM @paperAuthorAffiliations
+            INNER JOIN
+                @papers
+            ON @paperAuthorAffiliations.PaperId == @papers.PaperId;
+
+OUTPUT @paperAuthorAffiliations
+TO @Out_GraphOutputPath + "/PaperAuthorAffiliations.txt"
+USING Outputters.Tsv();
+
+@paperAbstractsInvertedIndex =
+    SELECT @paperAbstractsInvertedIndex.*
+    FROM @paperAbstractsInvertedIndex
+            LEFT SEMIJOIN
+                @papers
+            ON @paperAbstractsInvertedIndex.PaperId == @papers.PaperId;
+
+OUTPUT @paperAbstractsInvertedIndex
+TO @Out_GraphOutputPath + "/PaperAbstractsInvertedIndex.txt"
+USING Outputters.Tsv();
+
+@paperCitationContexts =
+    SELECT *
+    FROM @paperCitationContexts
+            LEFT SEMIJOIN
+                @papers AS p1
+            ON @paperCitationContexts.PaperId == p1.PaperId
+            LEFT SEMIJOIN
+            @papers AS p2
+            ON @paperCitationContexts.PaperId == p2.PaperId;
+
+OUTPUT @paperCitationContexts
+TO @Out_GraphOutputPath + "/PaperCitationContexts.txt"
+USING Outputters.Tsv();
+
+@paperExtendedAttributes =
+    SELECT *
+    FROM @paperExtendedAttributes
+            LEFT SEMIJOIN
+                @papers
+            ON @paperExtendedAttributes.PaperId == @papers.PaperId;
+
+OUTPUT @paperExtendedAttributes
+TO @Out_GraphOutputPath + "/PaperExtendedAttributes.txt"
+USING Outputters.Tsv();
+
+@paperFieldsOfStudy =
+    SELECT *
+    FROM @paperFieldsOfStudy
+            LEFT SEMIJOIN
+                @papers
+            ON @paperFieldsOfStudy.PaperId == @papers.PaperId;
+
+OUTPUT @paperFieldsOfStudy
+TO @Out_GraphOutputPath + "/PaperFieldsOfStudy.txt"
+USING Outputters.Tsv();
+
+@paperRecommendations =
+    SELECT *
+    FROM @paperRecommendations
+            LEFT SEMIJOIN
+                @papers AS P1
+            ON @paperRecommendations.PaperId == P1.PaperId
+            LEFT SEMIJOIN
+                @papers AS P2
+            ON @paperRecommendations.RecommendedPaperId == P2.PaperId;
+
+OUTPUT @paperRecommendations
+TO @Out_GraphOutputPath + "/PaperRecommendations.txt"
+USING Outputters.Tsv();
+
+@paperReferences =
+    SELECT *
+    FROM @paperReferences
+            LEFT SEMIJOIN
+                @papers AS P1
+            ON @paperReferences.PaperId == P1.PaperId
+            LEFT SEMIJOIN
+                @papers AS P2
+            ON @paperReferences.PaperReferenceId == P2.PaperId;
+
+OUTPUT @paperReferences
+TO @Out_GraphOutputPath + "/PaperReferences.txt"
+USING Outputters.Tsv();
+
+@paperResources =
+    SELECT *
+    FROM @paperResources
+            LEFT SEMIJOIN
+                @papers
+            ON @paperResources.PaperId == @papers.PaperId;
+
+OUTPUT @paperResources
+TO @Out_GraphOutputPath + "/PaperResources.txt"
+USING Outputters.Tsv();
+
+@paperUrls =
+    SELECT *
+    FROM @paperUrls
+            LEFT SEMIJOIN
+                @papers
+            ON @paperUrls.PaperId == @papers.PaperId;
+
+OUTPUT @paperUrls
+TO @Out_GraphOutputPath + "/PaperUrls.txt"
+USING Outputters.Tsv();
+
+@affiliations =
+    SELECT *
+    FROM @affiliations
+            LEFT SEMIJOIN
+                @paperAuthorAffiliations
+            ON @affiliations.AffiliationId == @paperAuthorAffiliations._AffiliationId;
+
+OUTPUT @affiliations
+TO @Out_GraphOutputPath + "/Affiliations.txt"
+USING Outputters.Tsv();
+
+@authors =
+    SELECT *
+    FROM @authors
+            LEFT SEMIJOIN
+                @paperAuthorAffiliations
+            ON @authors.AuthorId == @paperAuthorAffiliations.AuthorId;
+
+OUTPUT @authors
+TO @Out_GraphOutputPath + "/Authors.txt"
+USING Outputters.Tsv();
+
+@conferenceInstances =
+    SELECT *
+    FROM @conferenceInstances
+            LEFT SEMIJOIN
+                @papers
+            ON @conferenceInstances.ConferenceInstanceId == @papers._ConferenceInstanceId;
+
+OUTPUT @conferenceInstances
+TO @Out_GraphOutputPath + "/ConferenceInstances.txt"
+USING Outputters.Tsv();
+
+@conferenceSeries =
+    SELECT *
+    FROM @conferenceSeries
+            LEFT SEMIJOIN
+                @papers
+            ON @conferenceSeries.ConferenceSeriesId == @papers._ConferenceSeriesId;
+
+OUTPUT @conferenceSeries
+TO @Out_GraphOutputPath + "/ConferenceSeries.txt"
+USING Outputters.Tsv();
+
+@fieldsOfStudy =
+    SELECT *
+    FROM @fieldsOfStudy
+            LEFT SEMIJOIN
+                @paperFieldsOfStudy
+            ON @fieldsOfStudy.FieldOfStudyId == @paperFieldsOfStudy.FieldOfStudyId;
+
+OUTPUT @fieldsOfStudy
+TO @Out_GraphOutputPath + "/FieldsOfStudy.txt"
+USING Outputters.Tsv();
+
+@fieldOfStudyExtendedAttributes =
+    SELECT *
+    FROM @fieldOfStudyExtendedAttributes
+            LEFT SEMIJOIN
+                @paperFieldsOfStudy
+            ON @fieldOfStudyExtendedAttributes.FieldOfStudyId == @paperFieldsOfStudy.FieldOfStudyId;
+
+OUTPUT @fieldOfStudyExtendedAttributes
+TO @Out_GraphOutputPath + "/FieldOfStudyExtendedAttributes.txt"
+USING Outputters.Tsv();
+
+@fieldOfStudyChildren =
+    SELECT *
+    FROM @fieldOfStudyChildren
+            LEFT SEMIJOIN
+                @paperFieldsOfStudy AS P1
+            ON @fieldOfStudyChildren.FieldOfStudyId == P1.FieldOfStudyId
+            LEFT SEMIJOIN
+                @paperFieldsOfStudy AS P2
+            ON @fieldOfStudyChildren.ChildFieldOfStudyId == P2.FieldOfStudyId;
+
+OUTPUT @fieldOfStudyChildren
+TO @Out_GraphOutputPath + "/FieldOfStudyChildren.txt"
+USING Outputters.Tsv();
+
+@relatedFieldOfStudy =
+    SELECT *
+    FROM @relatedFieldOfStudy
+            LEFT SEMIJOIN
+                @paperFieldsOfStudy AS P1
+            ON @relatedFieldOfStudy.FieldOfStudyId1 == P1.FieldOfStudyId
+            LEFT SEMIJOIN
+                @paperFieldsOfStudy AS P2
+            ON @relatedFieldOfStudy.FieldOfStudyId2 == P2.FieldOfStudyId;
+
+OUTPUT @relatedFieldOfStudy
+TO @Out_GraphOutputPath + "/RelatedFieldOfStudy.txt"
+USING Outputters.Tsv();
+
+@journals =
+    SELECT *
+    FROM @journals
+            LEFT SEMIJOIN
+                @papers
+            ON @journals.JournalId == @papers._JournalId;
+
+OUTPUT @journals
+TO @Out_GraphOutputPath + "/Journals.txt"
+USING Outputters.Tsv();
+
+OUTPUT @entityRelatedEntities
+TO @Out_GraphOutputPath + "/EntityRelatedEntities.txt"
+USING Outputters.Tsv();
