@@ -166,6 +166,8 @@ DECLARE @inputUri string = "wasb://" + @In_MagBlobContainer + "@" + @In_MagBlobA
 // Closure paper selection
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+DECLARE @Hop int = 0;
+
 @targetPapers =
     EXTRACT
         CordId string,
@@ -173,13 +175,11 @@ DECLARE @inputUri string = "wasb://" + @In_MagBlobContainer + "@" + @In_MagBlobA
     FROM @In_Cord19Mapping
     USING Extractors.Csv(skipFirstNRows:1, silent:false, quoting:true);
 
-DECLARE @Hop int = 0;
-
 @targetPapers =
     SELECT DISTINCT (int?)@Hop AS Position, PaperId, (long?)0 AS Citation FROM @targetPapers WHERE PaperId > 0;
 
 // Hop 1
-SET @Hop = 1;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -202,7 +202,7 @@ SET @Hop = 1;
     GROUP BY PaperId;
 
 // Hop 2
-SET @Hop = 2;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -225,7 +225,7 @@ SET @Hop = 2;
     GROUP BY PaperId;
 
 // Hop 3
-SET @Hop = 3;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -248,7 +248,7 @@ SET @Hop = 3;
     GROUP BY PaperId;
 
 // Hop 4
-SET @Hop = 4;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -271,7 +271,7 @@ SET @Hop = 4;
     GROUP BY PaperId;
 
 // Hop 5
-SET @Hop = 5;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -294,7 +294,7 @@ SET @Hop = 5;
     GROUP BY PaperId;
 
 // Hop 6
-SET @Hop = 6;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -317,7 +317,7 @@ SET @Hop = 6;
     GROUP BY PaperId;
 
 // Hop 7
-SET @Hop = 7;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -340,7 +340,7 @@ SET @Hop = 7;
     GROUP BY PaperId;
 
 // Hop 8
-SET @Hop = 8;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -363,7 +363,7 @@ SET @Hop = 8;
     GROUP BY PaperId;
 
 // Hop 9
-SET @Hop = 9;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -386,7 +386,7 @@ SET @Hop = 9;
     GROUP BY PaperId;
 
 // Hop 10
-SET @Hop = 10;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
@@ -409,7 +409,7 @@ SET @Hop = 10;
     GROUP BY PaperId;
 
 // Hop 11
-SET @Hop = 11;
+SET @Hop = @Hop + 1;
 
 @newPapers =
     SELECT
