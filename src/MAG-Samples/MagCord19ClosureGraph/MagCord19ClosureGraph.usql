@@ -173,220 +173,263 @@ DECLARE @inputUri string = "wasb://" + @In_MagBlobContainer + "@" + @In_MagBlobA
     FROM @In_Cord19Mapping
     USING Extractors.Csv(skipFirstNRows:1, silent:false, quoting:true);
 
+DECLARE @Hop int = 0;
+
+@targetPapers =
+    SELECT DISTINCT (int?)@Hop AS Position, PaperId, (long?)0 AS Citation FROM @targetPapers WHERE PaperId > 0;
+
 // Hop 1
+SET @Hop = 1;
+
 @newPapers =
     SELECT
         B.PaperReferenceId AS PaperId
     FROM @targetPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
 
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-    
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
 @targetPapers =
-    SELECT (int?)0 AS Position, PaperId FROM @targetPapers WHERE PaperId > 0
+    SELECT * FROM @targetPapers
     UNION ALL
-    SELECT (int?)1 AS Position, PaperId FROM @newPapers;
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
 
 @targetPapers =
-    SELECT MIN(Position) AS Position, PaperId, COUNT() AS Citation
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
     FROM @targetPapers
     GROUP BY PaperId;
 
-//Hop 2
+// Hop 2
+SET @Hop = 2;
+
 @newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)2 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-//Hop 3
-@newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)3 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-//Hop 4
-@newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)4 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-//Hop 5
-@newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)5 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-//Hop 6
-@newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)6 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-//Hop 7
-@newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)7 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-//Hop 8
-@newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)8 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-//Hop 9
-@newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)9 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-//Hop 10
-@newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@moreNewPapers =
-    SELECT DISTINCT PaperId FROM @newPapers AS A
-    LEFT ANTISEMIJOIN @targetPapers AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)10 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-//Hop 11
-@newPapers =
-    SELECT B.PaperReferenceId AS PaperId
-    FROM @moreNewPapers AS A
-    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId;
-
-@targetPapers =
-    SELECT * FROM @targetPapers 
-    UNION ALL
-    SELECT (int?)11 AS Position, PaperId, (long?) 1 AS Citation FROM @newPapers;
-
-@targetPapers = 
-    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
-    FROM @targetPapers GROUP BY PaperId;
-
-// Workaround EstimatedCitation Issue
-@overallCitation =
     SELECT
-        A.PaperId,
-        COUNT(B.PaperId) AS OverallCitation
-    FROM @targetPapers AS A INNER JOIN @paperReferences AS B 
-    ON A.PaperId == B.PaperReferenceId GROUP BY A.PaperId;
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Hop 3
+SET @Hop = 3;
+
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Hop 4
+SET @Hop = 4;
+
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Hop 5
+SET @Hop = 5;
+
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Hop 6
+SET @Hop = 6;
+
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Hop 7
+SET @Hop = 7;
+
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Hop 8
+SET @Hop = 8;
+
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Hop 9
+SET @Hop = 9;
+
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Hop 10
+SET @Hop = 10;
+
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
+
+// Hop 11
+SET @Hop = 11;
+
+@newPapers =
+    SELECT
+        B.PaperReferenceId AS PaperId
+    FROM @targetPapers AS A
+    INNER JOIN @paperReferences AS B ON A.PaperId == B.PaperId
+    WHERE A.Position == (@Hop - 1);
+
+@newPapers =
+    SELECT PaperId, COUNT() AS Citation FROM @newPapers GROUP BY PaperId;
+
+@targetPapers =
+    SELECT * FROM @targetPapers
+    UNION ALL
+    SELECT (int?)@Hop AS Position, PaperId, Citation FROM @newPapers;
+
+@targetPapers =
+    SELECT MIN(Position) AS Position, PaperId, SUM(Citation) AS Citation
+    FROM @targetPapers
+    GROUP BY PaperId;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Subgraph Creation                                                           
@@ -398,11 +441,10 @@ DECLARE @inputUri string = "wasb://" + @In_MagBlobContainer + "@" + @In_MagBlobA
 @papers =
     SELECT
         B.*,
-        (C.OverallCitation == null?0:C.OverallCitation.Value) AS SubGraphCitationCount,
+        A.Citation AS SubGraphCitationCount,
         A.Position AS Hops
     FROM @targetPapers AS A 
-    INNER JOIN @papers AS B ON A.PaperId == B.PaperId
-    LEFT OUTER JOIN @overallCitation AS C ON A.PaperId == C.PaperId;
+    INNER JOIN @papers AS B ON A.PaperId == B.PaperId;
 
 OUTPUT @papers
 TO @Out_GraphOutputPath + "/Papers.txt"
