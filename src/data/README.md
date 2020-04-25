@@ -15,10 +15,10 @@ These files contain metadata to map Microsoft Academic Graph (MAG) paper entitie
 Posted | Type | File/folder | Description
 --- | --- | --- | ---
 03/26/2020 | CSV | [2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv](./2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv) | 2020-03-23 [WHO COVID-19 database](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov) linked to 2020-03-13 MAG
-04/18/2020 | CSV | [2020-04-17-CORD-19-MappedTo-2020-04-10-MAG-Backfill.csv](./2020-04-17-CORD-19-MappedTo-2020-04-10-MAG-Backfill.csv) | 2020-04-17 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage
-04/18/2020 | CSV | [2020-04-17-CORD-19-MappedTo-2020-04-10-MAG.csv](./2020-04-17-CORD-19-MappedTo-2020-04-10-MAG.csv) | 2020-04-17 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
-04/20/2020 | TSV | [2020-04-17-CORD-19-MappedTo-2020-04-10-MAG.tsv](./2020-04-17-CORD-19-MappedTo-2020-04-10-MAG.tsv) | 2020-04-17 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
-04/20/2020 | CSV | [2020-04-17-CORD-UID-MappedTo-2020-04-10-MAG-ID.csv](./2020-04-17-CORD-UID-MappedTo-2020-04-10-MAG-ID.csv) | CORD UID from the 2020-04-17 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) mapped to MAG ID
+04/24/2020 | CSV | [2020-04-24-CORD-19-MappedTo-2020-04-17-MAG-Backfill.csv](./2020-04-24-CORD-19-MappedTo-2020-04-17-MAG-Backfill.csv) | 2020-04-24 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage
+04/24/2020 | CSV | [2020-04-24-CORD-19-MappedTo-2020-04-17-MAG.csv](./2020-04-24-CORD-19-MappedTo-2020-04-17-MAG.csv) | 2020-04-24 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
+04/24/2020 | TSV | [2020-04-24-CORD-19-MappedTo-2020-04-17-MAG.tsv](./2020-04-24-CORD-19-MappedTo-2020-04-17-MAG.tsv) | 2020-04-24 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
+04/24/2020 | CSV | [2020-04-24-CORD-UID-MappedTo-2020-04-17-MAG-ID.csv](./2020-04-24-CORD-UID-MappedTo-2020-04-17-MAG-ID.csv) | CORD UID from the 2020-04-24 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) mapped to MAG ID
 
 ## Linked WHO COVID-19 data schema
 
