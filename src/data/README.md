@@ -5,23 +5,98 @@ description: Official WHO and CORD-19 data releases linked to MAG
 
 # Official WHO COVID-19 and CORD-19 data releases linked to MAG
 
-These files contain metadata to map Microsoft Academic Graph (MAG) paper entities to paper references collected for two different efforts:
+This page documents the files containing metadata to map Microsoft Academic Graph (MAG) paper entities to paper references collected for two different efforts:
 
 * World Health Organization: [Global research on coronavirus disease (COVID-19)](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov)
 * [COVID-19 Open Research Dataset (CORD-19)](https://pages.semanticscholar.org/coronavirus-research)
 
-## Contents
+## CORD-19 metadata with supplemented MAG ID mapping
+
+This file mirrors the official CORD-19 metadata.csv schema and data, with the addition of supplemented MAG ID mapping in the "mag_id" column w/ approximately 90% coverage.
+
+The most recent mapping file can be downloaded from:
+[https://aka.ms/magcord19mappingbackfill](https://aka.ms/magcord19mappingbackfill)
+
+The downloaded file name will contain both the official CORD-19 version (by date) and the official MAG version (by date) that were used to generate the mapping.
+
+### Schema
+
+Column # | Name | Source | Description
+--- | --- | --- | ---
+1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
+2 | sha | CORD-19 | 40-character sha1 of the PDF
+3 | source_x | CORD-19 | Paper source
+4 | title | CORD-19 | Paper title
+5 | doi | CORD-19 | Paper Digital Object Identifier (DOI)
+6 | pmcid | CORD-19 | PubMed Central reference number (PMCID)
+7 | pubmed_id | CORD-19 | PubMed reference number (PMID)
+8 | license | CORD-19 | Fulltext licensing (see [CORD-19 site](https://pages.semanticscholar.org/coronavirus-research))
+9 | abstract | CORD-19 | Paper abstract text
+10 | publish_time | CORD-19 | Paper publication date
+11 | authors | CORD-19 | List of paper author names
+12 | journal | CORD-19 | Paper publication journal
+13 | mag_id | MAG | MAG paper entity ID if available
+14 | who_covidence_id | CORD-19 | Unique paper ID associated with WHO COVID-19 data set
+15 | arxiv_id | CORD-19 | Arxiv ID
+16 | pdf_json_files | CORD-19 | Location of metadata extracted from PDF in JSON format
+17 | pmc_json_files | CORD-19 | Location of metadata extracted from PMC in JSON format
+18 | url | CORD-19 | Paper full-text URL
+
+## CORD-19 metadata with additional MAG ID mapping metadata
+
+This file mirrors the official CORD-19 metadata.csv schema and data, with the addition of MAG mapping information in 4 additional columns (see below).
+
+The most recent mapping file can be downloaded from:
+[https://aka.ms/magcord19mappingextra](https://aka.ms/magcord19mappingextra)
+
+The downloaded file name will contain both the official CORD-19 version (by date) and the official MAG version (by date) that were used to generate the mapping.
+
+### Schema
+
+Column # | Name | Source | Description
+--- | --- | --- | ---
+1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
+2 | sha | CORD-19 | 40-character sha1 of the PDF
+3 | source_x | CORD-19 | Paper source
+4 | title | CORD-19 | Paper title
+5 | doi | CORD-19 | Paper Digital Object Identifier (DOI)
+6 | pmcid | CORD-19 | PubMed Central reference number (PMCID)
+7 | pubmed_id | CORD-19 | PubMed reference number (PMID)
+8 | license | CORD-19 | Fulltext licensing (see [CORD-19 site](https://pages.semanticscholar.org/coronavirus-research))
+9 | abstract | CORD-19 | Paper abstract text
+10 | publish_time | CORD-19 | Paper publication date
+11 | authors | CORD-19 | List of paper author names
+12 | journal | CORD-19 | Paper publication journal
+13 | mag_id | CORD-19 | MAG paper entity ID supplied by CORD-19
+14 | who_covidence_id | CORD-19 | Unique paper ID associated with WHO COVID-19 data set
+15 | arxiv_id | CORD-19 | Arxiv ID
+16 | pdf_json_files | CORD-19 | Location of metadata extracted from PDF in JSON format
+17 | pmc_json_files | CORD-19 | Location of metadata extracted from PMC in JSON format
+18 | url | CORD-19 | Paper full-text URL
+19 | MagMappingScore | MAG | Score that reflects the accuracy of the mapping based on how much of the paper metadata could be linked to MAG
+20 | MagPaperId | MAG | MAG paper entity ID supplied by Microsoft
+21 | MagPaperFamilyId | MAG | MAG paper entity family ID
+22 | MagMappedLabels | MAG | String used for mapping the paper metadata to MAG paper entity with embedded XML labels indicating what terms were mapped to what fields, and the confidence of that mapping
+
+## CORD UID mapped to MAG ID
+
+This file maps the CORD-19 UID (cord_uid) to the corresponding MAG ID.
+
+The most recent mapping file can be downloaded from:
+[https://aka.ms/magcord19mapping](https://aka.ms/magcord19mapping)
+
+The downloaded file name will contain both the official CORD-19 version (by date) and the official MAG version (by date) that were used to generate the mapping.
+
+### Schema
+Column # | Name | Source | Description
+--- | --- | --- | ---
+1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
+2 | mag_id | MAG | MAG paper entity ID
+
+## WHO COVID-19 mapping
 
 Posted | Type | File/folder | Description
 --- | --- | --- | ---
-05/01/2020 | CSV | [Latest-CORD-19-MappedTo-MAG-Backfill.csv](./Latest-CORD-19-MappedTo-MAG-Backfill.csv) | Fixed name version of most recent [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage
-05/01/2020 | CSV | [Latest-CORD-19-MappedTo-MAG.csv](./Latest-CORD-19-MappedTo-MAG.csv) | Fixed name version of most recent [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
-05/01/2020 | TSV | [Latest-CORD-19-MappedTo-MAG.tsv](./Latest-CORD-19-MappedTo-MAG.tsv) | Fixed name version of most recent [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
-05/01/2020 | CSV | [Latest-CORD-UID-MappedTo-MAG-ID.csv](./Latest-CORD-UID-MappedTo-MAG-ID.csv) | Fixed name version of most recent CORD UID mapping to MAG ID
-05/01/2020 | CSV | [2020-05-01-CORD-19-MappedTo-2020-04-24-MAG-Backfill.csv](./2020-05-01-CORD-19-MappedTo-2020-04-24-MAG-Backfill.csv) | 2020-05-01 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage
-05/01/2020 | CSV | [2020-05-01-CORD-19-MappedTo-2020-04-24-MAG.csv](./2020-05-01-CORD-19-MappedTo-2020-04-24-MAG.csv) | 2020-05-01 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
-05/01/2020 | TSV | [2020-05-01-CORD-19-MappedTo-2020-04-24-MAG.tsv](./2020-05-01-CORD-19-MappedTo-2020-04-24-MAG.tsv) | 2020-05-01 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) with ~90% MAG ID coverage, plus additional MAG metadata
-05/01/2020 | CSV | [2020-05-01-CORD-UID-MappedTo-2020-04-24-MAG-ID.csv](./2020-05-01-CORD-UID-MappedTo-2020-04-24-MAG-ID.csv) | CORD UID from the 2020-05-01 [CORD-19 dataset](https://pages.semanticscholar.org/coronavirus-research) mapped to MAG ID
 03/26/2020 | CSV | [2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv](./2020-03-23-WHO-MappedTo-2020-03-13-MicrosoftAcademicGraph.csv) | 2020-03-23 [WHO COVID-19 database](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov) linked to 2020-03-13 MAG
 
 ## Linked WHO COVID-19 data schema
@@ -50,38 +125,6 @@ Column # | Name | Source | Description
 20 | MagDoi | MAG | MAG paper entity DOI
 21 | MagPaperFamilyId | MAG | MAG paper entity family ID
 22 | MagPubmedId | MAG | MAG paper entity pubmed ID
-
-## Linked CORD-19 data schema
-
-Column # | Name | Source | Description
---- | --- | --- | ---
-1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
-2 | sha | CORD-19 | 40-character sha1 of the PDF
-3 | source_x | CORD-19 | Paper source
-4 | title | CORD-19 | Paper title
-5 | doi | CORD-19 | Paper Digital Object Identifier (DOI)
-6 | pmcid | CORD-19 | PubMed Central reference number (PMCID)
-7 | pubmed_id | CORD-19 | PubMed reference number (PMID)
-8 | license | CORD-19 | Fulltext licensing (see [CORD-19 site](https://pages.semanticscholar.org/coronavirus-research))
-9 | abstract | CORD-19 | Paper abstract text
-10 | publish_time | CORD-19 | Paper publication date
-11 | authors | CORD-19 | List of paper author names
-12 | journal | CORD-19 | Paper publication journal
-13 | Microsoft Academic Paper ID | CORD-19 | MAG paper entity ID supplied by CORD-19
-14 | WHO #Covidence | CORD-19 | Unique paper ID associated with WHO COVID-19 data set
-15 | has_full_text | CORD-19 | Indicates if paper has full text in CORD-19 data set
-16 | full_text_file | CORD-19 | Indicates licensing terms of full text in CORD-19 data set
-17 | url | CORD-19 | Paper full-text URL
-18 | MagMappingScore | MAG | Score that reflects the accuracy of the mapping based on how much of the paper metadata could be linked to MAG
-19 | MagPaperId | MAG | MAG paper entity ID supplied by Microsoft
-20 | MagPaperFamilyId | MAG | MAG paper entity family ID
-21 | MagMappedLabels | MAG | String used for mapping the paper metadata to MAG paper entity with embedded XML labels indicating what terms were mapped to what fields, and the confidence of that mapping
-
-## Linked CORD UID to MAG ID schema
-Column # | Name | Source | Description
---- | --- | --- | ---
-1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
-2 | Microsoft Academic Paper ID | MAG | MAG paper entity ID
 
 ## Contributing
 
