@@ -41,6 +41,7 @@ Column # | Name | Source | Description
 16 | pdf_json_files | CORD-19 | Location of metadata extracted from PDF in JSON format
 17 | pmc_json_files | CORD-19 | Location of metadata extracted from PMC in JSON format
 18 | url | CORD-19 | Paper full-text URL
+19 | s2_id | AI2 | Semantic Scholar paper ID
 
 ## CORD-19 metadata with additional MAG ID mapping metadata
 
@@ -73,10 +74,11 @@ Column # | Name | Source | Description
 16 | pdf_json_files | CORD-19 | Location of metadata extracted from PDF in JSON format
 17 | pmc_json_files | CORD-19 | Location of metadata extracted from PMC in JSON format
 18 | url | CORD-19 | Paper full-text URL
-19 | MagMappingScore | MAG | Score that reflects the accuracy of the mapping based on how much of the paper metadata could be linked to MAG
-20 | MagPaperId | MAG | MAG paper entity ID supplied by Microsoft
-21 | MagPaperFamilyId | MAG | MAG paper entity family ID
-22 | MagMappedLabels | MAG | String used for mapping the paper metadata to MAG paper entity with embedded XML labels indicating what terms were mapped to what fields, and the confidence of that mapping
+19 | s2_id | AI2 | Semantic Scholar paper ID
+20 | MagMappingScore | MAG | Score that reflects the accuracy of the mapping based on how much of the paper metadata could be linked to MAG
+21 | MagPaperId | MAG | MAG paper entity ID supplied by Microsoft
+22 | MagPaperFamilyId | MAG | MAG paper entity family ID
+23 | MagMappedLabels | MAG | String used for mapping the paper metadata to MAG paper entity with embedded XML labels indicating what terms were mapped to what fields, and the confidence of that mapping
 
 ## CORD UID mapped to MAG ID
 
