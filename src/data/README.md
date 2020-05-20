@@ -12,7 +12,7 @@ This page documents the files containing metadata to map Microsoft Academic Grap
 
 ## CORD-19 metadata with supplemented MAG ID mapping
 
-This file mirrors the official CORD-19 metadata.csv schema and data, with the addition of supplemented MAG ID mapping in the "mag_id" column w/ approximately 90% coverage.
+This file mirrors the official CORD-19 metadata.csv schema and data, with the addition of supplemented MAG ID mapping in the "mag_id" column w/ approximately 88% coverage.
 
 The most recent mapping file can be downloaded from:
 [https://aka.ms/magcord19mappingbackfill](https://aka.ms/magcord19mappingbackfill)
