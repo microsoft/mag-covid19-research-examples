@@ -24,7 +24,7 @@ Before you begin, you should have these items of information:
 
  ![UploadFiles.png](UploadFiles.png "Upload files")
  
-2. The authors' affiliation locations are used as the paper locations. For your convenience, we included the affiliation-region mapping in [AffilicationRegions.txt](AffilicationRegions.txt). This file has all the affiliations involved in this analysis. Upload this file to the same location as TopCSConferences.txt. <br>If you wish to get more affiliations location, MAG Affiliation.txt contains latitude and longitude for each affiliation. You can use [Bing Map API](https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-point) to get the region/country from the coordinates.
+2. The authors' affiliation locations are used as the paper locations. For your convenience, we included the affiliation-region mapping in [AffiliationRegions.txt](AffiliationRegions.txt). This file has all the affiliations involved in this analysis. Upload this file to the same location as TopCSConferences.txt. <br>If you wish to get more affiliations location, MAG Affiliation.txt contains latitude and longitude for each affiliation. You can use [Bing Map API](https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-point) to get the region/country from the coordinates.
 
 ## Define functions to extract MAG and conference data
 
