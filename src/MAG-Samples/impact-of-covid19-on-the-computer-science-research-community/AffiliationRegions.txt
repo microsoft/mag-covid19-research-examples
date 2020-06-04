@@ -47,7 +47,6 @@
 96408169	Azusa Pacific University	United States
 97455420	Sohag University	Egypt
 99412970	Royal Danish Academy of Fine Arts	EU
-99908691	Yuan Ze University	Taiwan
 101407740	Chandigarh University	India
 101466613	Swedish National Defence College	EU
 105333472	University of the Philippines Cebu College	Philippines
@@ -144,7 +143,6 @@
 20864730	Military College of Signals	Pakistan
 21234642	Zhejiang University of Media and Communications (ZUMC)	China
 21881038	Bogor Agricultural University	Indonesia
-25251306	Yuanpei University	Taiwan
 25485817	St. Pölten University of Applied Sciences	EU
 29845686	Commerce College, Jaipur	India
 31941578	Scuola superiore di Catania	EU
@@ -168,7 +166,6 @@
 68916915	University of Gabès	Tunisia
 70550537	DemandTec	United States
 71966907	University of Northern Colorado	United States
-74455405	Dahan Institute of Technology	Taiwan
 75929689	University of Connecticut Health Center	United States
 76777374	Central University of Rajasthan	India
 77079311	Wonkwang University	South Korea
@@ -176,7 +173,6 @@
 83558840	Universidade Nova de Lisboa	EU
 84884186	Newcastle University	EU
 85202249	CA Technologies	United States
-92172085	Chunghwa Telecom	Taiwan
 92924379	European Graduate School	Switzerland
 94782393	Champlain Regional College	Canada
 95516664	Festo	EU
@@ -208,7 +204,6 @@
 139503278	ILOG	United States
 142740786	University of Louisville	United States
 142899784	University of Sfax	Tunisia
-143003336	Minghsin University of Science and Technology	Taiwan
 151808059	Colorado School of Public Health	United States
 157855434	Bourns College of Engineering	United States
 158123994	Toyo University	Japan
@@ -319,13 +314,11 @@
 130750295	Xinyang Normal University	China
 131632401	Teikyo Heisei University	Japan
 133836048	Royal Veterinary College	EU
-135551196	National Kaohsiung Normal University	Taiwan
 136722135	Claremont Graduate University	United States
 138216421	Eastern Michigan University	United States
 138549579	International School for Advanced Studies	EU
 140902125	Portland Community College	United States
 142509341	College of the Atlantic	United States
-142974352	National Sun Yat-sen University	Taiwan
 143936627	University of Béchar	Algeria
 145003942	United States Army Armament Research, Development and Engineering Center	United States
 149146724	Himeji Dokkyo University	Japan
@@ -338,9 +331,7 @@
 168913471	University of Balamand	Lebanon
 181233156	University of Oregon	United States
 182937616	Hyundai Mobis	South Korea
-189290911	Chungshan Institute of Science and Technology	Taiwan
 190103667	Autonomous University of Aguascalientes	Mexico
-190409851	Kun Shan University	Taiwan
 191149221	Ferris State University	United States
 192928004	Autonomous University of Bucaramanga	Colombia
 196345858	Chungnam National University	South Korea
@@ -411,7 +402,6 @@
 55061410	Air Force Institute of Technology	United States
 55884533	BlackRock	EU
 59011859	Celestica	Canada
-59460038	Chung Hua University	Taiwan
 61575859	Josai International University	Japan
 64134780	Atatürk University	Turkey
 69072986	University of Mauritius	Mauritius
@@ -471,7 +461,6 @@
 201917954	Salt Lake Community College	United States
 202524275	Smith College	United States
 204086833	Cirrus Logic	United States
-205612303	Chinese Culture University	Taiwan
 206895457	University of Siegen	EU
 240956293	JMIT	India
 251397004	Midnapore Medical College and Hospital	India
@@ -490,7 +479,6 @@
 1325675289	Moorfields Eye Hospital	EU
 1325846038	The Royal Marsden NHS Foundation Trust	EU
 1338020422	Vector Fabrics, B.V.	EU
-1340108165	National Center for Research on Earthquake Engineering	Taiwan
 2746051580	PSL Research University	EU
 2799980853	Korea University Medical Center	South Korea
 2800154431	Keck Hospital of USC	United States
@@ -534,7 +522,6 @@
 59433898	Brunel University London	EU
 59475050	Jamia Millia Islamia	India
 59606676	Federal University of Pará	Brazil
-65446980	National Chin-Yi University of Technology	Taiwan
 67009956	Iran University of Science and Technology	Iran
 68947357	University of Strasbourg	EU
 71030271	Heidelberg Institute for Theoretical Studies	EU
@@ -657,7 +644,6 @@
 6111482	Swiss Seismological Service	Switzerland
 6750721	University of Montana	United States
 8264552	Lublin University of Technology	EU
-8679417	Open University of Hong Kong	Hong Kong
 10703595	Global Academy of Technology	India
 17937529	German Cancer Research Center	EU
 19149307	Chennai Mathematical Institute	India
@@ -703,7 +689,6 @@
 92715842	University of West Bohemia	EU
 96062909	Babson College	United States
 96852419	Capital Normal University	China
-98374036	Delta Electronics	Taiwan
 98389781	Dhirubhai Ambani Institute of Information and Communication Technology	India
 98813999	American College of Surgeons	United States
 105695857	Mentor Graphics	United States
@@ -741,7 +726,6 @@
 164387090	University of Applied Sciences, Mainz	EU
 165677929	Sungshin Women's University	South Korea
 166794780	Wells Fargo	United States
-169065244	MTR Corporation	Hong Kong
 169864488	Abubakar Tafawa Balewa University	Nigeria
 173245417	Future Institute of Engineering and Management	India
 174015415	Morpho	United States
@@ -803,7 +787,6 @@
 2802654988	Princess Margaret Cancer Centre	Canada
 2802742124	John Radcliffe Hospital	EU
 2802936041	Glenrose Rehabilitation Hospital	Canada
-2802999704	TransWorld University	Taiwan
 2803209242	University of California	United States
 19722	Ateneo de Manila University	Philippines
 392282	University at Albany, SUNY	United States
@@ -840,7 +823,6 @@
 59649739	Jiangxi University of Finance and Economics	China
 63169043	United International University	Bangladesh
 65181880	Indian Institute of Technology, Hyderabad	India
-65196183	Tatung University	Taiwan
 68649149	University of Malakand	Pakistan
 70542479	Southwest Agricultural University	China
 75059550	Zhejiang Gongshang University	China
@@ -864,13 +846,11 @@
 100205273	Universidad Técnica Particular de Loja	Ecuador
 105036370	AstraZeneca	EU
 108714496	Tunis University	Tunisia
-115980683	Oriental Institute of Technology	Taiwan
 118292597	National Taipei University of Technology	United States
 118564535	University of Bern	Switzerland
 124391630	Arab Open University	Oman
 131249849	Oregon State University	United States
 131579929	Mansfield University of Pennsylvania	United States
-134161618	National Taiwan Normal University	Taiwan
 135191193	University of Indianapolis	United States
 136486123	Suncor Energy	Canada
 136810615	National Research Corporation	United States
@@ -937,13 +917,11 @@
 16231767	Turku University of Applied Sciences	EU
 17721919	Shanxi Medical University	China
 21215505	Al-Quds University	Israel
-22442739	University of Taipei	Taiwan
 23745121	Point Park University	United States
 23877868	Serco Group	EU
 24456540	Korea Aerospace University	South Korea
 31072267	Burgas Free University	EU
 31512782	Technische Universität Darmstadt	EU
-35357665	China University of Technology	Taiwan
 45294948	Post Graduate Institute of Medical Education and Research	India
 45746246	Cyprus College	EU
 49332381	University of Oklahoma Health Sciences Center	United States
@@ -987,7 +965,6 @@
 138361304	Wimbledon College of Art	EU
 138943879	Whitman College	United States
 140643854	Spansion	United States
-141568987	Hong Kong Baptist University	Hong Kong
 142606810	Pacific Northwest National Laboratory	United States
 146399215	University of Tsukuba	Japan
 150229711	University of Electronic Science and Technology of China	China
@@ -1095,7 +1072,6 @@
 79223203	Guangdong Ocean University	China
 82760581	Taizhou University	China
 83019370	Eindhoven University of Technology	EU
-85148518	Fo Guang University	Taiwan
 85283370	Senshu University	Japan
 87424562	Ithaca College	United States
 88830068	Shaanxi Normal University	China
@@ -1103,7 +1079,6 @@
 90843659	University of Franche-Comté	EU
 93989153	Osaka University of Arts	Japan
 94518387	Hanoi University of Science and Technology	Vietnam
-96323854	National Yang-Ming University	Taiwan
 97750245	Software AG	EU
 103481513	Essilor	EU
 108464949	Center for Applied Special Technology	United States
@@ -1151,7 +1126,6 @@
 185065464	Veer Surendra Sai University of Technology	India
 185163786	King Abdulaziz University	Saudi Arabia
 185986306	Santa Cruz Institute for Particle Physics	United States
-191764612	National Taitung Junior College	Taiwan
 192891849	University of Wah	Pakistan
 197025333	National University of La Pampa	Argentina
 197906079	American Urological Association	United States
@@ -1160,7 +1134,6 @@
 200744771	Zürcher Fachhochschule	Switzerland
 203006114	St. Thomas' College of Engineering and Technology	India
 203303854	University of the Andes	Venezuela
-204246437	Nan Kai University of Technology	Taiwan
 204983213	Harbin Institute of Technology	China
 250520410	Prairie View A&M University	United States
 252758333	G. B. Pant University of Agriculture and Technology	India
@@ -1239,7 +1212,6 @@
 105237324	Joshibi University of Art and Design	Japan
 107949126	University of Lethbridge	Canada
 108785884	Intermountain Healthcare	United States
-109289231	National Kaohsiung First University of Science and Technology	Taiwan
 109385254	Bentley Systems	United States
 110017253	François Rabelais University	EU
 111397538	HEC Lausanne	Switzerland
@@ -1260,7 +1232,6 @@
 145205905	Izon Science	EU
 150729083	University of Brasília	Brazil
 154488051	Ashkelon Academic College	Israel
-154864474	National Taiwan University of Science and Technology	Taiwan
 155744322	Kubota	Japan
 157273133	University of Botswana	Botswana
 159219196	Rajasthan Technical University	India
@@ -1282,7 +1253,6 @@
 184889055	Washington and Lee University	United States
 190032430	State University of Library Studies and Information Technologies	EU
 192209268	Shaoxing University	China
-192703390	Ming Chuan University	Taiwan
 196064397	Ludwig Institute for Cancer Research	EU
 198985290	Saint Xavier University	United States
 201873833	Dongyang University	South Korea
@@ -1291,7 +1261,6 @@
 207025910	Periyar Maniammai University	India
 207547235	Banha University	Egypt
 863896202	Delhi Technological University	India
-880143343	NTT Communications Corp	Hong Kong
 910567637	St. John Fisher College	United States
 915451901	Ministry of Interior (Saudi Arabia)	Saudi Arabia
 916541031	University of Colima	Mexico
@@ -1380,7 +1349,6 @@
 123791789	Saint-Gobain	EU
 128365640	Regis University	United States
 129877168	University of Oldenburg	EU
-131948415	National Taichung University of Science and Technology	Taiwan
 136053868	CMJ University	India
 137141687	SP Technical Research Institute of Sweden	Sweden
 137799390	University of the West Indies	Jamaica
@@ -1448,7 +1416,6 @@
 20497471	ThoughtWorks	United States
 23805111	Mohammad Ali Jinnah University	Pakistan
 27897274	Istituto Superiore di Sanità	EU
-28627172	National Pingtung Institute of Commerce	Taiwan
 30685716	European Institute	United States
 31419693	Kyungpook National University	South Korea
 31610912	San Antonio River Authority	United States
@@ -1468,7 +1435,6 @@
 57570584	Udmurt State University	Russia
 61057504	Fujian Agriculture and Forestry University	China
 63125613	Trimble Navigation	United States
-68171755	National Defense Medical Center	Taiwan
 71270174	Victoria University, Australia	Australia
 71503853	University of the Algarve	EU
 73010019	Chartered Semiconductor Manufacturing	Singapore
@@ -1492,7 +1458,6 @@
 111753288	Fujian Normal University	China
 112819271	Shaheed Benazir Bhutto Women University	Pakistan
 125454184	Namik Kemal University	Turkey
-126145234	Chaoyang University of Technology	Taiwan
 126541806	Lagos State University	Nigeria
 128770141	Buskerud and Vestfold University College	Norway
 129978906	Oliver Wyman	United States
@@ -1507,7 +1472,6 @@
 142823887	St. John's University	United States
 150913223	Texas Woman's University	United States
 151583259	Barry University	United States
-153512688	National Taiwan Ocean University	Taiwan
 154840374	Muhimbili University of Health and Allied Sciences	Tanzania
 157087037	Mercyhurst University	United States
 163019553	St Patrick's College, Maynooth	EU
@@ -1654,7 +1618,6 @@
 1330701686	Collegio Carlo Alberto	EU
 1331164456	Military Academy	Serbia
 1332341397	AECOM	United States
-2724335451	HTC	Taiwan
 2738703131	French Alternative Energies and Atomic Energy Commission	France
 2799614521	Royal Botanic Gardens	EU
 2800247358	San Francisco Zoo	United States
@@ -1699,7 +1662,6 @@
 67337280	Egyptian Russian University	Egypt
 67900169	Chung-Ang University	South Korea
 68986083	Northwest Normal University	China
-75357094	National Yunlin University of Science and Technology	Taiwan
 86326927	Universidad Santa María	Venezuela
 88081825	Empire State College	United States
 88761825	Korea University of Science and Technology	South Korea
@@ -1725,7 +1687,6 @@
 143671001	Government College of Engineering, Salem	India
 143719239	Ericsson Nikola Tesla	EU
 143923087	Sultan Idris University of Education	Malaysia
-146617529	Hong Kong Applied Science and Technology Research Institute	Hong Kong
 148277539	Surya University	Indonesia
 149460656	Institute of Education	EU
 149581226	Hawaii Pacific University	United States
@@ -1739,7 +1700,6 @@
 168933312	Danske Bank	EU
 170754417	Moholy-Nagy University of Art and Design	EU
 175399479	Haldia Institute of Technology	India
-178968375	Chu Hai College of Higher Education	Hong Kong
 179097149	Carthage University	Tunisia
 181865267	Munich Re	EU
 182565829	Scientific Computing and Imaging Institute	United States
@@ -1935,7 +1895,6 @@
 34275845	Shri Guru Gobind Singhji Institute of Engineering and Technology	India
 35552710	The Nippon Dental University	Japan
 35855495	University College Roosevelt	EU
-38007976	De Lin Institute of Technology	Taiwan
 39822340	Virginia–Maryland Regional College of Veterinary Medicine	United States
 40380974	North Bengal Medical College	India
 46176106	University of Burgos	EU
@@ -2052,7 +2011,6 @@
 29617571	University of Indonesia	Indonesia
 30181195	Ohu University	Japan
 30274774	A.T. Kearney	United States
-33096239	National Dong Hwa University	Taiwan
 33308869	Southern New Hampshire University	United States
 34034455	Ramakrishna Mission Vivekananda University	India
 37445192	KDU University College	Malaysia
@@ -2113,7 +2071,6 @@
 154099455	Shandong University	China
 157210198	Scuola Normale Superiore di Pisa	EU
 157392197	Hashemite University	Jordan
-160272722	Fortune Institute of Technology	Taiwan
 162608824	University of Sussex	EU
 168095185	Krishna Institute of Engineering and Technology	India
 176205391	Uttaradit Rajabhat University	Thailand
@@ -2165,7 +2122,6 @@
 12379730	Poznań University of Economics	EU
 12553626	University of Zululand	South Africa
 12970578	University of North Alabama	United States
-14780663	MingDao University	Taiwan
 15089104	China Aerospace Science and Industry Corporation	China
 16362100	Rafael Advanced Defense Systems	Israel
 16892885	Claflin University	United States
@@ -2216,7 +2172,6 @@
 129775632	Semiconductor Research Corporation	United States
 130217899	Åbo Akademi University	EU
 136239157	Jaipur Engineering College	India
-143578492	Asia University (Taiwan)	Taiwan
 143868143	Anhui University	China
 146696386	AAI Corporation	United States
 151651118	Lincoln University (Missouri)	United States
@@ -2277,7 +2232,6 @@
 2800201399	NHS Greater Glasgow and Clyde	EU
 2800419323	Princess Margaret Hospital for Children	Australia
 2801014300	Florida Gulf Coast University	United States
-2801059291	Castle Peak Hospital	Hong Kong
 2801155882	Bluegrass Community and Technical College	United States
 2802738698	Palo Alto College	United States
 5316388	Manipur Institute of Technology	India
@@ -2315,7 +2269,6 @@
 75420490	LSU Health Sciences Center New Orleans	United States
 75909800	Southern Oregon University	United States
 77528689	MCKV Institute of Engineering	India
-78768145	Chihlee Institute of Technology	Taiwan
 82002896	Central University of Venezuela	Venezuela
 84909340	Institut des Hautes Études Scientifiques	EU
 90441925	Salzburg Research	EU
@@ -2348,7 +2301,6 @@
 147869694	Continental AG	Canada
 149851306	National Academy of Sciences of Ukraine	Ukraine
 150026939	Tohoku Bunka Gakuen University	Japan
-152743029	Kaohsiung Medical University	Taiwan
 152988861	Exelixis	United States
 153374732	Liaoning Normal University	China
 155660961	University of Turku	EU
@@ -2445,7 +2397,6 @@
 84058292	Helwan University	Egypt
 84309776	Sugiyama Jogakuen University	Japan
 88858668	Image Engine	Canada
-89178830	National Kaohsiung University of Applied Sciences	Taiwan
 90149893	China Earthquake Administration	China
 91132365	Boston Dynamics	United States
 94800806	Birzeit University	Israel
@@ -2537,7 +2488,6 @@
 11019714	University of A Coruña	EU
 11986463	Università Iuav di Venezia	EU
 13591777	The University of Nottingham Ningbo China	China
-16566446	National Pingtung University of Science and Technology	Taiwan
 21620634	Toyo Engineering Corporation	Japan
 24306055	Suffolk University	United States
 24392897	Landmark College	United States
@@ -2545,7 +2495,6 @@
 27963644	HHL Leipzig Graduate School of Management	EU
 31649931	Saint Anselm College	United States
 32170380	Medgar Evers College	United States
-32303042	Tajen University	Taiwan
 35429941	Elizabethtown College	United States
 39521962	Hunan City University	China
 44948468	Salem State University	United States
@@ -2569,7 +2518,6 @@
 90329211	Ulyanovsk State Technical University	Russia
 91044093	Zayed University	United Arab Emirates
 91481961	Mills College	United States
-92582371	Southern Taiwan University of Science and Technology	Taiwan
 94588446	Hongik University	South Korea
 95056601	Actelion	Switzerland
 96036126	Kumamoto University	Japan
@@ -2722,12 +2670,10 @@
 163151501	Hangzhou Normal University	China
 165476936	Vale	Brazil
 166613482	Minnesota State University Moorhead	United States
-168719708	City University of Hong Kong	Hong Kong
 169877490	University of Mumbai	India
 170164250	Elon University	United States
 170215575	National University of Defense Technology	China
 177753169	Ursinus College	United States
-177918364	Providence University	Taiwan
 179093154	University of New Hampshire at Manchester	United States
 179299105	University of Central Greece	EU
 181397559	Asia Pacific University of Technology & Innovation	Malaysia
@@ -2748,7 +2694,6 @@
 204490172	Shiraz University of Technology	Iran
 205158640	University of Skövde	EU
 221716585	University of Texas at Tyler	United States
-230842804	National Taiwan University of Physical Education and Sport	Taiwan
 267501691	Instituto Tecnológico de La Piedad	Mexico
 269199756	Omsk State University	Russia
 312958679	National University of Science and Technology	Zimbabwe
@@ -2793,7 +2738,6 @@
 27737485	College of Management and Economics	Canada
 29739308	Guangxi Normal University	China
 33782267	NYNEX	United States
-35926432	Mackay Medical College	Taiwan
 36443711	Magna Græcia University	EU
 39854758	Auckland University of Technology	New Zealand
 43591049	PerkinElmer	United States
@@ -2926,10 +2870,8 @@
 39534123	Gwangju Institute of Science and Technology	South Korea
 39737112	Chulabhorn Research Institute	Thailand
 41382782	Pontifical University of Salamanca	EU
-42474999	Vanung University	Taiwan
 42894916	NICTA	Australia
 43517866	MDA Space Missions	United States
-50519452	Lunghwa University of Science and Technology	Taiwan
 51226738	Dong-a University	South Korea
 52035452	Jawaharlal Nehru Technological University, Anantapur	India
 52510681	Daejin University	South Korea
@@ -2979,14 +2921,12 @@
 137724175	University of Antananarivo	Madagascar
 143593769	East China University of Science and Technology	China
 150491032	Photronics, Inc.	United States
-151221077	Chung Yuan Christian University	Taiwan
 152479009	Biola University	United States
 154490720	Ecole nationale d'ingénieurs de Saint-Etienne	EU
 155284866	Maharishi Markandeshwar University, Mullana	India
 164956901	Visa Inc.	EU
 170726198	University of Novi Sad	Serbia
 171530641	SAGEM	EU
-173717819	BenQ	Taiwan
 174101054	Changwon National University	South Korea
 174183983	Maria Curie-Skłodowska University	EU
 174612323	University of the District of Columbia	United States
@@ -3000,7 +2940,6 @@
 194601409	Cooperative Institute for Mesoscale Meteorological Studies	United States
 195573530	Janelia Farm Research Campus	United States
 196883781	Clarkson College	United States
-202968851	Huafan University	Taiwan
 203082224	Bielefeld University of Applied Sciences	EU
 207123951	New Mexico Institute of Mining and Technology	United States
 213072177	University of Maroua	Cameroon
@@ -3164,7 +3103,6 @@
 21173400	Mutah University	Jordan
 24541011	Soonchunhyang University	South Korea
 24796534	Washington College	United States
-29365675	National Taiwan University of Arts	Taiwan
 30809798	ShanghaiTech University	China
 34809795	Hannover Medical School	EU
 35886859	Korea University of Technology and Education	South Korea
@@ -3227,7 +3165,6 @@
 162346809	Institut national des langues et civilisations orientales	EU
 162577319	University of Texas at Dallas	United States
 164849246	Metaio GmbH	United States
-165106657	Chien Hsin University of Science and Technology	Taiwan
 167067459	Astronautics Corporation of America	United States
 169285535	Investment Technology Group, Inc.	United States
 170153556	University of Health Science	Cambodia
@@ -3235,11 +3172,9 @@
 170935008	Pontifícia Universidade Católica de Minas Gerais	Brazil
 176364128	University Institute of Engineering and Technology, Panjab University	India
 177018963	University of Advancing Technology	United States
-178613991	National Taitung University	Taiwan
 183362221	Tecnatom	EU
 185088104	Tokyo City University	Japan
 191429286	Sam Houston State University	United States
-193365169	National Chi Nan University	Taiwan
 193484058	Laureate International Universities	Australia
 197604219	National Research Council	United States
 204611524	Rowland Institute for Science	EU
@@ -3288,7 +3223,6 @@
 7495430	Idiap Research Institute	Switzerland
 10541126	Sri Manakula Vinayagar Engineering College	India
 12132619	Wake Forest Institute for Regenerative Medicine	United States
-18960004	University of Kang Ning	Taiwan
 20089843	Princeton University	United States
 23686167	National Aerospace University – Kharkiv Aviation Institute	Ukraine
 26916880	Alberta College of Art and Design	Canada
@@ -3332,7 +3266,6 @@
 120221655	Research Studios Austria	EU
 120611246	Obayashi Corporation	Australia
 126633494	University of Basrah	Iraq
-127947667	Taipei College of Maritime Technology	Taiwan
 129252642	Uninett	Norway
 139858224	M. J. P. Rohilkhand University	India
 140275651	University of Pannonia	EU
@@ -3515,7 +3448,6 @@
 202103088	Fugro	Norway
 204588832	Islamic Azad University of Karaj	Iran
 204924380	Research Institute for Mathematical Sciences	Japan
-207776796	Overseas Chinese University	Taiwan
 228011842	Reliance Industries	United States
 261916979	Islamic Azad University of Majlesi	Iran
 322491407	Acıbadem University	Turkey
@@ -3553,7 +3485,6 @@
 699696	National Institute of Mental Health and Neurosciences	India
 1183665	Softwin	EU
 2321252	Hiroshima Kokusai Gakuin University	Japan
-4880106	Feng Chia University	Taiwan
 5337786	Chatham University	United States
 6100803	Heritage University	United States
 7446070	Woosuk University	South Korea
@@ -3568,7 +3499,6 @@
 20622354	Forrester Research	United States
 26415053	University of L'Aquila	EU
 26604189	Shiv Nadar University	India
-32078218	National Penghu University of Science and Technology	Taiwan
 32589535	Universiti Teknikal Malaysia Melaka	Malaysia
 33875959	Western Norway Research Institute	Norway
 34250744	University of Łódź	EU
@@ -3630,7 +3560,6 @@
 157485424	KAIST	South Korea
 160994706	Odense University	EU
 162489102	University of Batna	Algeria
-162838928	National Chung Hsing University	Taiwan
 165304983	National University of Lanús	Argentina
 166846921	Liaoning University of Petroleum and Chemical Technology	China
 170203145	Laboratory of Molecular Biology	EU
@@ -3658,7 +3587,6 @@
 913958620	Erasmus University Rotterdam	EU
 1287643137	Beth Israel Medical Center	United States
 1291822081	Grumman Aircraft Corporation	United States
-1294586568	Hospital Authority	Hong Kong
 1295232881	Dutch Ministry of Justice	EU
 1296785037	Attorney-General's Department	Australia
 1304023955	Ankang University	China
@@ -3828,7 +3756,6 @@
 55538621	China Jiliang University	China
 62183977	Ciba Specialty Chemicals	Switzerland
 66640193	Nagarjuna College of Engineering and Technology	India
-68673971	Taoyuan Innovation Institute of Technology	Taiwan
 72375662	Osaka Institute of Technology	Japan
 76610242	Cypress Semiconductor	Japan
 84470341	The Catholic University of America	United States
@@ -3947,14 +3874,12 @@
 105140100	IMDEA	EU
 106107269	Claremont McKenna College	United States
 108093660	Benedictine College	United States
-114150738	Fu Jen Catholic University	Taiwan
 123315585	Railway Technical Research Institute	Japan
 124970724	N.M.A.M. Institute of Technology	India
 127108677	Eastern Institute of Technology	New Zealand
 131860188	Ask.com	United States
 133270356	Tianjin University of Technology and Education	China
 133599470	Universidad del Desarrollo	Chile
-134793997	National University of Tainan	Taiwan
 140744787	University of Pardubice	EU
 143104139	Hobart and William Smith Colleges	United States
 143386109	Miles College	United States
@@ -3971,7 +3896,6 @@
 180634299	University of Sistan and Baluchestan	Iran
 182003036	IDEO	United States
 182674077	Kongu Engineering College	India
-189772984	Tzu Chi University	Taiwan
 192723230	Calcutta Institute of Engineering and Management	India
 196349391	University of Ulm	EU
 197875241	California State University, Stanislaus	United States
@@ -4025,7 +3949,6 @@
 63920570	Tennessee Technological University	United States
 64295750	Indian Institute of Technology Indore	India
 66108857	Gallaudet University	United States
-70522481	National Changhua University of Education	Taiwan
 71007489	Kyungnam University	South Korea
 71346753	Inatel	Brazil
 71422933	Sheffield Hallam University	EU
@@ -4089,7 +4012,6 @@
 185241533	Clayton State University	United States
 185488668	Estácio S.A.	Brazil
 188663726	DSP Group	United States
-192168892	National University of Kaohsiung	Taiwan
 193073490	Siksha O Anusandhan University	India
 195893171	Zuse Institute Berlin	EU
 196471810	Korea Electrotechnology Research Institute	South Korea
@@ -4189,7 +4111,6 @@
 102516824	University of Technology of Compiègne	EU
 102520234	Cologne University of Applied Sciences	EU
 103187081	Smithsonian Institution	United States
-108377105	Tainan University of Technology	Taiwan
 112185891	Rockwell Collins	United States
 114982338	Aalborg University – Copenhagen	EU
 117357259	National Institute of Japanese Literature	Japan
@@ -4432,10 +4353,8 @@
 83015752	Busan University of Foreign Studies	South Korea
 84724731	La Salle University, Colombia	Colombia
 87303767	Engineer Research and Development Center	United States
-88780834	Hwa Hsia University of Technology	Taiwan
 91041137	Assiut University	Egypt
 91339672	Arthur Andersen	United States
-95858998	Hungkuang University	Taiwan
 98834328	Wuyi University	China
 99065089	Tsinghua University	China
 103406327	Western Carolina University	United States
@@ -4487,7 +4406,6 @@
 270586704	Yıldırım Beyazıt University	Turkey
 283854653	Machine Intelligence Research Institute	United States
 291386647	Belarusian State University	Belarus
-875649924	Himax	Taiwan
 884043246	Hamburg University of Technology	EU
 891303086	MIMOS	Malaysia
 905010384	Marin Software	United States
@@ -4496,7 +4414,6 @@
 911468752	Lebanese International University	Lebanon
 1290223451	International Business School, Germany	EU
 1296697866	National Board of Health and Welfare	EU
-1304132090	Sony Broadcast & Professional Research Laboratories	Taiwan
 1304196042	Loyola University Medical Center	United States
 1305633390	International Sleep Products Association	United States
 1306266525	Goddard Space Flight Center	United States
@@ -4589,7 +4506,6 @@
 139100880	Penn State Cancer Institute	United States
 143115733	Saint Martin's University	United States
 145210474	Assumption College	United States
-148099254	National Chung Cheng University	Taiwan
 149471917	Fort Lewis College	United States
 153267046	Kaiserslautern University of Technology	EU
 153975220	Kenyatta University	Kenya
@@ -4644,7 +4560,6 @@
 1340951533	Vision Institute	EU
 1342131907	Unilever	EU
 2279609970	university of lille	France
-2753814022	China University of Science and Technology	Taiwan
 2799421553	Hospital Kuala Lumpur	Malaysia
 2800120229	Indian Navy	India
 2800363144	Federal Institute of Pernambuco	Brazil
@@ -4659,7 +4574,6 @@
 2613432	University of South Florida	United States
 5188418	Laurea University of Applied Sciences	EU
 9903089	Georgia Institute of Technology College of Computing	United States
-12213908	Ming Chi University of Technology	Taiwan
 12832649	Gachon University	South Korea
 16489122	Easwari Engineering College	India
 16528096	Aichi Medical University	Japan
@@ -4673,7 +4587,6 @@
 44070886	University of New South Wales Asia	Singapore
 44430492	Indian Institute of Management Bangalore	India
 45473482	China Telecom	China
-47519274	Taipei Medical University	Taiwan
 49193961	Kansas Wesleyan University	United States
 58590764	Southern California Edison	United States
 63596082	Tunis El Manar University	Tunisia
@@ -4686,7 +4599,6 @@
 71715416	Universidade Federal do ABC	Brazil
 75092371	University of Hradec Králové	EU
 75390827	Beijing University of Chemical Technology	China
-75430998	National Ilan University	Taiwan
 75917431	Nara Institute of Science and Technology	Japan
 78663439	Institute of Chartered Financial Analysts of India	India
 80201079	Credit Suisse	Switzerland
@@ -4731,7 +4643,6 @@
 157773358	Sun Yat-sen University	China
 159737604	Technical University of Nova Scotia	Canada
 162096671	University of Los Andes	Colombia
-165488957	Lingnan University	Hong Kong
 166455938	University of Babylon	Iraq
 169381384	University of Groningen	EU
 169521973	University of New Mexico	United States
@@ -4815,7 +4726,6 @@
 59530521	Universidade Federal do Vale do São Francisco	Brazil
 59692284	École supérieure de chimie physique électronique de Lyon	EU
 61722147	Universidade do Vale do Rio dos Sinos	Brazil
-63616730	Hong Kong Institute of Education	Hong Kong
 74872605	China Southern Power Grid Company	China
 74973139	Carnegie Mellon University	United States
 75027704	University of Tennessee	United States
@@ -4825,7 +4735,6 @@
 86797954	Biotronik	Switzerland
 88973175	Eckerd College	United States
 90259746	Capital University of Economics and Business	China
-91279580	Chung Shan Medical University	Taiwan
 91727514	Novosibirsk State Technical University	Russia
 98335200	University of Sri Lanka	Sri Lanka
 98903518	Detecon	EU
@@ -4943,7 +4852,6 @@
 77955169	Mathsoft	United States
 78577808	Bharathidasan Institute of Technology	India
 79246082	Thaksin University	Thailand
-80327900	Chang Jung Christian University	Taiwan
 87996342	Niigata Sangyo University	Japan
 90576441	Atlas Elektronik	EU
 92251255	University of Split	EU
@@ -4969,7 +4877,6 @@
 143719379	Balochistan University of Information Technology, Engineering and Management Sciences	Pakistan
 146516829	Hirosaki University	Japan
 147878501	Orlando Health	United States
-148366613	National Chiao Tung University	Taiwan
 149594827	Xidian University	China
 154347574	University of Rijeka	EU
 155765044	University of Hildesheim	EU
@@ -5031,9 +4938,7 @@
 6312358	Geneva College	United States
 12202575	Posts and Telecommunications Institute of Technology	Vietnam
 17477748	Rajshahi University of Engineering & Technology	Bangladesh
-22265921	National Central University	Taiwan
 28158892	Guidant	United States
-33374188	Kao Yuan University	Taiwan
 33926330	Al-Balqa` Applied University	Jordan
 34771391	University of Cyprus	EU
 39244652	Indian Institute of Information Technology Design & Manufacturing Kancheepuram	India
@@ -5082,7 +4987,6 @@
 123919768	Epson	Japan
 126863827	Pace University	United States
 130189395	Walchand College of Engineering, Sangli	India
-130510345	Dayeh University	Taiwan
 135198339	Vancouver Prostate Centre	Canada
 137996928	Selçuk University	Turkey
 141883831	Instituto Nacional de Matemática Pura e Aplicada	Brazil
@@ -5143,7 +5047,6 @@
 2801942218	Hvidovre Hospital	EU
 2801970007	Turku University Hospital	EU
 2802536511	Italian Aerospace Research Centre	EU
-1877545	Caritas Institute of Higher Education	Hong Kong
 4472751	Anhui Normal University	China
 7454413	École centrale de Lille	EU
 8778637	National Institute of Technology, Srinagar	India
@@ -5159,7 +5062,6 @@
 29867402	Central Washington University	United States
 29891158	University of Sharjah	United Arab Emirates
 36523846	Stenden University of Applied Sciences	EU
-38452253	Chung Chou University of Science and Technology	Taiwan
 43968019	Karlstad University	EU
 46305995	Taiyuan University of Science and Technology	China
 47265099	Ho Chi Minh City University of Technology	Vietnam
@@ -5174,7 +5076,6 @@
 75957467	Yasuda Women's University	Japan
 79946792	Muğla University	Turkey
 82724352	Universiti Teknologi MARA	Malaysia
-84653119	Academia Sinica	Taiwan
 86897205	Athabasca University	Canada
 92528248	Qatar Foundation	Qatar
 92696645	Kibi International University	Japan
@@ -5272,7 +5173,6 @@
 48025715	International Crops Research Institute for the Semi-Arid Tropics	Mali
 48071105	AVL	EU
 49502546	Alfred University	United States
-49645291	National Taipei University of Education	Taiwan
 50441567	University of the Balearic Islands	EU
 51296549	Sri Venkateswara College of Engineering	India
 51622183	Shaanxi University of Science and Technology	China
@@ -5358,7 +5258,6 @@
 1317621060	Indian Institute of Technology Guwahati	India
 1318003438	Elsevier	United States
 1321659569	European Space Operations Centre	EU
-1322227051	Li Ka Shing Faculty of Medicine, University of Hong Kong	Hong Kong
 1324766304	Barrow Neurological Institute	United States
 1332110390	Wild Center	United States
 1333370159	Motorola	United States
@@ -5450,7 +5349,6 @@
 157674565	University of Liège	EU
 163113649	Eastern New Mexico University	United States
 164915025	Mexican Social Security Institute	Mexico
-171215191	Global Unichip Corporation	Taiwan
 171246369	École nationale supérieure de mécanique et d'aérotechnique	EU
 175051016	Universidad Pública de Navarra	EU
 178665097	Linear Technology	United States
@@ -5460,7 +5358,6 @@
 184692499	Austin Peay State University	United States
 184746854	Lincoln University (New Zealand)	New Zealand
 185286233	University of Pitești	EU
-185940356	Soochow University (Taiwan)	Taiwan
 187398979	Favaloro University	Argentina
 193541982	National Nuclear Laboratory	EU
 197940685	National Oceanography Centre	EU
@@ -5495,12 +5392,10 @@
 2801956180	Gartnavel General Hospital	EU
 2802076678	University of Tennessee Medical Center	United States
 2802660506	United States Coast Guard	United States
-2802753785	Mackay Memorial Hospital	Taiwan
 2802964606	Canberra Hospital	Australia
 4665924	University of Rostock	EU
 12176630	Tanjungpura University	Indonesia
 13383945	Exponent	United States
-13521601	Yu Da University	Taiwan
 24603500	University of Massachusetts Amherst	United States
 26080491	Kunming Medical University	China
 26653445	Tellabs	Canada
@@ -5563,7 +5458,6 @@
 146509216	ENSEEIHT	EU
 148178115	Technical University of Civil Engineering of Bucharest	EU
 151201029	National Scientific and Technical Research Council	Argentina
-152100410	Aletheia University	Taiwan
 153355300	Imperial College Healthcare	EU
 157960836	Nihon Pharmaceutical University	Japan
 160722675	New Zealand College of Chiropractic	New Zealand
@@ -5632,7 +5526,6 @@
 4322298	Towson University	United States
 6059380	University of Baltimore	United States
 12469534	Quaid-i-Azam University	Pakistan
-14243506	Hong Kong Polytechnic University	Hong Kong
 14701112	Monterrey Institute of Technology and Higher Education, Querétaro	Mexico
 17010184	TELECOM Lille 1	EU
 19894307	University of Montpellier	EU
@@ -5641,7 +5534,6 @@
 25623903	College of Management Academic Studies	Israel
 27072994	CMC Electronics	Canada
 28638086	Vancouver Island University	Canada
-29742261	Takming University of Science and Technology	Taiwan
 33070275	Hokkaido Bunkyo University	Japan
 34002243	Mae Fah Luang University	Thailand
 36244299	Recife Center for Advanced Studies and Systems	Brazil
@@ -5672,7 +5564,6 @@
 87644286	Tilera	United States
 88017793	Port Said University	Egypt
 90671498	Ontario Power Generation	Canada
-91807558	National Cheng Kung University	Taiwan
 92664306	Walter Reed Army Institute of Research	United States
 94616838	Jönköping University	EU
 95694802	South-West State University	Russia
@@ -5697,7 +5588,6 @@
 141860296	Shobi University	Japan
 142277643	University of Tennessee Space Institute	United States
 145561451	McDaniel College	United States
-145935303	Ling Tung University	Taiwan
 146138208	Instituto de Medicina Molecular	EU
 146868628	Anand Institute of Higher Technology	India
 149481174	Tamagawa University	Japan
@@ -5737,7 +5627,6 @@
 1280536761	Ames Research Center	United States
 1288451689	Real Academia Española	EU
 1292848113	Baptist Hospital of Miami	United States
-1293718874	Tri-Service General Hospital	Taiwan
 1294639003	Summa Health System	United States
 1295345811	Institut de l'information scientifique et technique	EU
 1295346377	Monsanto	United States
@@ -5770,13 +5659,11 @@
 8833935	University of León	EU
 9341345	University of Lübeck	EU
 11944219	University of La Frontera	Chile
-12509574	Jinwen University of Science and Technology	Taiwan
 16197041	Cyprus International University	Cyprus
 16391192	Tel Aviv University	Israel
 16569854	Nayoro City University	Japan
 19989617	Paine College	United States
 25793905	SofTech, Inc.	United States
-25846049	National Tsing Hua University	Taiwan
 26347476	Loma Linda University	United States
 32597200	Ghent University	EU
 33552525	LNM Institute of Information Technology	India
@@ -5798,7 +5685,6 @@
 60922564	Naver Corporation	South Korea
 61928449	North Asia University	Japan
 63341726	Université du Québec à Trois-Rivières	Canada
-64045040	Fooyin University	Taiwan
 73142707	Athens University of Economics and Business	EU
 75421653	University of Missouri–Kansas City	United States
 76571253	University of Dammam	Saudi Arabia
@@ -5816,7 +5702,6 @@
 90833107	Chandigarh College of Engineering and Technology	India
 97565354	University of Lausanne	Switzerland
 99552915	University of Rajasthan	India
-99613584	National Taipei University	Taiwan
 101290598	Syed Ammal Engineering College	India
 101465142	Guru Nanak Dev Engineering College, Bidar	India
 106165777	University of Central Florida	United States
@@ -5845,9 +5730,7 @@
 157183634	Shanghai University of Science and Technology	China
 158842170	Chongqing University	China
 159289790	Savannah State University	United States
-165441096	National Health Research Institutes	Taiwan
 166580119	Indian Institute of Social Welfare and Business Management	India
-169090423	Tunghai University	Taiwan
 173304897	University of Granada	EU
 175312469	Kansai University of Welfare Sciences	Japan
 175532246	University of Eastern Finland	EU
@@ -5859,7 +5742,6 @@
 181934358	Saitama Prefectural University	Japan
 184647316	South Dakota School of Mines and Technology	United States
 189448455	GE Healthcare	EU
-191969501	National Taipei University of Nursing and Health Science	Taiwan
 193427800	Applied Materials	United States
 193531525	George Washington University	United States
 196679149	Lander University	United States
@@ -5909,7 +5791,6 @@
 8696757	SIM University	Singapore
 10285697	Ontoprise GmbH	EU
 16778253	Nencki Institute of Experimental Biology	EU
-21724602	Hsuan Chuang University	Taiwan
 23906160	University of Tripoli	Libya
 26771391	Jaipuria Institute of Management	India
 29377299	Neusoft Institute of Information	China
@@ -6010,7 +5891,6 @@
 877025370	Insight Enterprises	United States
 878931444	Central Maine Community College	United States
 888436365	Belcan Corporation	United States
-889458895	University of Hong Kong	Hong Kong
 889804353	Bosch	EU
 890611160	Martin Marietta Materials, Inc.	United States
 894135719	University of Monterrey	Mexico
@@ -6054,7 +5934,6 @@
 11701301	Griffith University	Australia
 12240146	Australian Institute of Sport	Australia
 13897259	Andrés Bello National University	Chile
-14140830	Shih Chien University	Taiwan
 14316845	NECTEC	Thailand
 17747738	Beijing University of Chinese Medicine	China
 19700959	Florida International University	United States
@@ -6076,7 +5955,6 @@
 68561585	Tohoku University of Community Service and Science	Japan
 68763199	Universidad Católica San Antonio de Murcia	EU
 69094615	Universidad San Francisco de Quito	Ecuador
-69729016	Tungnan University	Taiwan
 70571728	Oberlin College	United States
 71454806	Dynamics Research Corporation	United States
 78880903	University of Huelva	EU
@@ -6179,11 +6057,9 @@
 8764889	University of Gondar	Ethiopia
 9421779	BioMérieux	EU
 12504272	Siddaganga Institute of Technology	India
-16733864	National Taiwan University	Taiwan
 18452120	Yantai University	China
 19716509	Jamia Hamdard	India
 20272500	University of Basilicata	EU
-22289153	Taipei Municipal University of Education	Taiwan
 24714338	Youngsan University	South Korea
 27551014	Nippon Bunri University	Japan
 28490864	DSO National Laboratories	Singapore
@@ -6194,7 +6070,6 @@
 37461747	Wuhan University	China
 38871580	Mondeca	EU
 39327780	iMinds	EU
-40689657	National Formosa University	Taiwan
 41455075	Federal University of Campina Grande	Brazil
 42731748	National Institute of Applied Science and Technology	Tunisia
 45886413	Willow Garage	United States
@@ -6213,7 +6088,6 @@
 72235472	State University of Zanzibar	Tanzania
 73650269	Nomura Research Institute	Japan
 78675632	Beijing Information Science & Technology University	China
-87354575	National Chengchi University	Taiwan
 87890613	Epigenomics AG	EU
 90435624	TXT e-solutions	EU
 92507152	John Jay College of Criminal Justice	United States
@@ -6228,7 +6102,6 @@
 138564716	Prince Mohammad bin Fahd University	Saudi Arabia
 141779708	Tensilica	United States
 144536108	Apache Corporation	United States
-151229976	National Kaohsiung University of Hospitality and Tourism	Taiwan
 153555950	SAIT Polytechnic	Canada
 154893126	Guizhou Normal University	China
 156216236	Qassim University	Saudi Arabia
@@ -6279,7 +6152,6 @@
 2419132	Lessius Mechelen	EU
 4896460	Koya University	Iraq
 5681781	University of Adelaide	Australia
-5971364	Chienkuo Technology University	Taiwan
 6030618	Seikei University	Japan
 6141010	European Institute of Oncology	EU
 6507939	China Unicom	China
@@ -6349,7 +6221,6 @@
 131434179	Nanjing University of Chinese Medicine	China
 131835042	Uludağ University	Turkey
 136754270	State University of Paraíba	Brazil
-137596753	Eaton Corporation	Taiwan
 139934261	Kavli Institute for Theoretical Physics	United States
 142631665	École des ponts ParisTech	EU
 143379178	Forschungszentrum Informatik	EU
@@ -6373,7 +6244,6 @@
 170007583	J.P. Morgan & Co.	United States
 170053871	TeliaSonera	EU
 170488218	Achmea	EU
-173093425	Chang Gung University	Taiwan
 175124709	Süleyman Demirel University	Turkey
 177877127	University of Western Australia	Australia
 183496438	Portuguese Air Force Academy	EU
@@ -6441,7 +6311,6 @@
 36909309	National Institute of Technology, Hamirpur	India
 36940870	Olympus Corporation	EU
 41635967	National College of Engineering	India
-43518871	National Kaohsiung Marine University	Taiwan
 45204951	University of Calabria	EU
 45647351	Heritage College of Osteopathic Medicine	United States
 46482218	Anqing Teachers College	China
@@ -6496,17 +6365,14 @@
 136150977	TE Connectivity	Switzerland
 137543953	Telecom Italia	EU
 142652706	Autonomous University of Chihuahua	Mexico
-143545923	Central Police University	Taiwan
 146087005	Maranatha Christian University	Indonesia
 153151563	Harrisburg University of Science and Technology	United States
 153687341	Zarqa Private University	Jordan
 165526535	Royal College of Art	EU
 173466955	Iona College	United States
-174748290	Kainan University	Taiwan
 182145113	Isaac Newton Institute	EU
 183067930	Shanghai Jiao Tong University	China
 183263030	Graduate University of Advanced Technology	Iran
-183570559	National Chiayi University	Taiwan
 186982818	K. J. Somaiya College of Engineering	India
 187986737	Collège de France	EU
 190249584	University of Innsbruck	EU
@@ -6534,7 +6400,6 @@
 1298482675	Salesforce.com	Australia
 1308271441	Murshidabad College of Engineering & Technology	India
 1327237609	Chinese Ministry of Education	China
-1327533815	Chinese Ministry of Economic Affairs	Taiwan
 1327576362	The Feinstein Institute for Medical Research	United States
 1335386220	SPSS Inc.	United States
 2799790188	Future of Privacy Forum	United States
@@ -6702,7 +6567,6 @@
 50783897	K J Somaiya Medical College	India
 51768193	Royal Military College of Canada	Canada
 54713919	Geisinger Health System	United States
-56019348	Chia Nan University of Pharmacy and Science	Taiwan
 58956616	Case Western Reserve University	United States
 59725666	Mediterranea University of Reggio Calabria	EU
 61623833	University of Agriculture, Faisalabad	Pakistan
@@ -6779,7 +6643,6 @@
 865725288	Tutor.com	United States
 876193797	VIT University	India
 881766915	Nanjing University	China
-901624438	Realtek	Taiwan
 913782294	Perceptive Pixel	United States
 920743555	Bible Broadcasting Network	United States
 1281027232	Lincoln Hospital	United States
@@ -6816,7 +6679,6 @@
 5889141	College of Horticulture	India
 8975392	Osmania University	India
 10091056	Kanazawa University	Japan
-14276461	Chungyu Institute of Technology	Taiwan
 16184564	Union Pacific Railroad	United States
 19370010	Orange S.A.	EU
 21234101	Thiagarajar College of Engineering	India
@@ -6849,7 +6711,6 @@
 72677176	Tripura University	India
 79238269	University of Seville	EU
 81385395	Health Science University	Japan
-82850477	Taipei National University of the Arts	Taiwan
 85788879	Peninsula College of Medicine and Dentistry	EU
 86695891	Australian Catholic University	Australia
 90589149	Fresenius Medical Care	EU
@@ -6954,7 +6815,6 @@
 42405503	Gifu University	Japan
 46603895	Varian Medical Systems	United States
 47099075	Hydro-Québec	Canada
-47605537	Hang Seng Management College	Hong Kong
 47720641	Huazhong University of Science and Technology	China
 47948057	Kunming Metallurgy College	China
 51314090	Josip Juraj Strossmayer University of Osijek	EU
@@ -7062,7 +6922,6 @@
 25399158	Mahidol University	Thailand
 25859482	Takasaki University of Health and Welfare	Japan
 33924745	Samsung Electro-Mechanics	South Korea
-34574549	National Taichung University of Education	Taiwan
 34713844	DAV College, Chandigarh	India
 37823250	University of Development Alternative	Bangladesh
 43980791	Clausthal University of Technology	EU
@@ -7129,10 +6988,8 @@
 172993857	FLIR Systems	United States
 173089394	Saint Petersburg State University of Information Technologies, Mechanics and Optics	Russia
 177097968	University of Tennessee at Chattanooga	United States
-177725633	The Chinese University of Hong Kong	Hong Kong
 179225836	University of Augsburg	EU
 180437899	University of Bremen	EU
-180662265	China Mobile	Hong Kong
 180726961	Shenzhen University	China
 180730613	Eizo	United States
 181744264	Kharazmi University	Iran
@@ -7154,13 +7011,10 @@
 290832772	Cameron International	United States
 294129958	Maturi Venkata Subba Rao Engineering College	India
 865915315	VU University Amsterdam	EU
-882009436	Central Taiwan University of Science and Technology	Taiwan
 888729015	University of Colorado Colorado Springs	United States
-917184967	Bank of China	Hong Kong
 922237871	ASTRON	EU
 1281933226	South Florida Water Management District	United States
 1295929820	Yamaha Corporation	Japan
-1296823611	National Palace Museum	Taiwan
 1299297775	Firaxis Games	United States
 1306956679	United Kingdom Ministry of Defence	EU
 1309919772	Sarnoff Corporation	United States
@@ -7193,7 +7047,6 @@
 4019319	Geomagic	United States
 5101941	Telespazio	EU
 7478328	Waterford Institute of Technology	EU
-16518940	Hong Kong Institute of Vocational Education	China
 16574732	Westfield College	EU
 20121455	Bielefeld University	EU
 22113271	Teradyne	United States
@@ -7247,7 +7100,6 @@
 113825674	Handong Global University	South Korea
 117979880	Rhodes College	United States
 118298837	Sankara Nethralaya	India
-119213423	Taipei Chengshih University of Science and Technology	Taiwan
 124261462	Oxford Brookes University	EU
 124633538	University of Seoul	South Korea
 124784065	Assystem	EU
@@ -7269,7 +7121,6 @@
 159084141	Bethel College	United States
 161548249	Bangor University	EU
 167274908	Guangxi University for Nationalities	China
-175714360	National Pingtung University of Education	Taiwan
 178254495	Dayalbagh Educational Institute	India
 178906410	Lyon College	United States
 180585399	Dalian Institute of Chemical Physics	China
@@ -7325,7 +7176,6 @@
 2801496451	German Primate Center	EU
 2802042752	University High School	United States
 2802782265	Fondazione Ugo Bordoni	EU
-2803004286	Taipei Veterans General Hospital	Taiwan
 2539912	North East University	Bangladesh
 4068193	University of Belgrade	Serbia
 4829542	RheinMain University of Applied Sciences	EU
@@ -7358,13 +7208,11 @@
 55769427	Indiana University – Purdue University Indianapolis	United States
 58028834	University of Madeira	EU
 60065076	Pacific Lutheran University	United States
-68348662	Shih Hsin University	Taiwan
 70428276	Elms College	United States
 70983195	Syracuse University	United States
 77501641	Kalyani Government Engineering College	India
 78650965	Dresden University of Technology	EU
 80432865	Qiongzhou University	China
-91951123	Cheng Shiu University	Taiwan
 93131583	Emporia State University	United States
 93320256	University of Tampa	United States
 96424156	Federal Institute for Occupational Safety and Health	EU
@@ -7427,7 +7275,6 @@
 195296446	Temasek Polytechnic	Singapore
 197251160	Hebrew University of Jerusalem	Israel
 203929324	Industrial Light & Magic	United States
-204116968	Hsiuping University of Science and Technology	Taiwan
 205571821	Universidad Iberoamericana Ciudad de México	Mexico
 207223250	Indian Institute of Information Technology, Design and Manufacturing, Jabalpur	India
 207624831	Slovak Academy of Sciences	EU
@@ -7507,7 +7354,6 @@
 118347220	NEC	EU
 119031078	Nanzan University	Japan
 119668213	Karunya University	India
-125934054	National United University	Taiwan
 127439422	Indian Institute of Science Education and Research, Kolkata	India
 131155284	Alagappa University	India
 132586189	Zhongyuan University of Technology	China
@@ -7529,13 +7375,11 @@
 181316896	Sir George Williams University	Canada
 181631907	University of Ibadan	Nigeria
 184461854	University of Winchester	EU
-184693016	China Medical University (Taiwan)	Taiwan
 185492890	University of Canterbury	New Zealand
 189575948	South Valley University	Egypt
 189977406	University of the Andes, Chile	Chile
 193054373	University of Redlands	United States
 197979904	Saint Joseph's College	United States
-200769079	Hong Kong University of Science and Technology	Hong Kong
 201654770	PPG Industries	United States
 202376891	Sarhad University of Science & IT, Ring Road (Hayatabad Link) Peshawar	Pakistan
 203474044	National Centre of Scientific Research "Demokritos"	EU
@@ -7573,7 +7417,6 @@
 2801973574	Tampa General Hospital	United States
 2801997478	European Synchrotron Radiation Facility	EU
 2802127220	Alberta Children's Hospital	Canada
-2802331550	Taipei Medical University Hospital	Taiwan
 2802925319	University of Alberta Hospital	Canada
 2803004491	Structural Genomics Consortium	EU
 1745920	University of Wisconsin–Platteville	United States
@@ -7632,7 +7475,6 @@
 136705414	Japan Patent Office	Japan
 142270456	Augsburg University of Applied Sciences	EU
 142732210	University of Engineering and Technology, Lahore	Pakistan
-144999699	Taiwan Shoufu University	Taiwan
 145689991	Universidade Feevale	Brazil
 145808223	Hanbat National University	South Korea
 151050371	International University of Korea	South Korea
@@ -7725,7 +7567,6 @@
 91203450	University of Haifa	Israel
 91633459	Middle East University	Jordan
 96415178	University of Defence	EU
-98298690	I-Shou University	Taiwan
 98358874	Delft University of Technology	EU
 98957242	Kitami Institute of Technology	Japan
 100066346	University of Stuttgart	EU
@@ -7733,7 +7574,6 @@
 101450707	American Science and Engineering, Inc.	United States
 102826571	Setsunan University	Japan
 102939073	State University of Ceará	Brazil
-107470533	Tamkang University	Taiwan
 107720978	Ain Shams University	Egypt
 110402625	Kyushu Kyoritsu University	Japan
 110617504	Tokyo University of Foreign Studies	Japan
@@ -7795,7 +7635,6 @@
 1286406326	Bureau of Meteorology	Australia
 1291458624	Swedish Defence Research Agency	EU
 1297460800	Defence Research and Development Canada	Canada
-1309796872	National Pingtung University	Taiwan
 1315559485	National Museum of Japanese History	Japan
 1317715968	West	United States
 1331897569	Agriculture and Agri-Food Canada	Canada
