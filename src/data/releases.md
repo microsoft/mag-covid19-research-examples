@@ -7,6 +7,7 @@ description: Official MAG/CORD-19 release history
 
 CORD-19 version | MAG version | # w/MAG | Total # | Coverage | Download
 --- | --- | --- | --- | --- | ---
+2020-07-07 | 2020-07-02 | 166548 | 189742 | 87.78% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-07-07-CORD-UID-MappedTo-2020-07-02-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-07-07-CORD-19-MappedTo-2020-07-02-MAG-Backfill.csv)
 2020-07-06 | 2020-07-02 | 166435 | 188873 | 88.12% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-07-06-CORD-UID-MappedTo-2020-07-02-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-07-06-CORD-19-MappedTo-2020-07-02-MAG-Backfill.csv)
 2020-07-05 | 2020-06-25 | 162545 | 188319 | 86.31% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-07-05-CORD-UID-MappedTo-2020-06-25-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-07-05-CORD-19-MappedTo-2020-06-25-MAG-Backfill.csv)
 2020-07-01 | 2020-06-25 | 157086 | 177035 | 88.73% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-07-01-CORD-UID-MappedTo-2020-06-25-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-07-01-CORD-19-MappedTo-2020-06-25-MAG-Backfill.csv)
