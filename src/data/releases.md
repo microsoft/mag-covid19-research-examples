@@ -36,4 +36,4 @@ CORD-19 version | MAG version | # w/MAG | Total # | Coverage | Download
 
 * ["ID only" file schema](./#cord-uid-mapped-to-mag-id)
 * ["Full" file schema](./#cord-19-metadata-with-supplemented-mag-id-mapping)
-* ["Closure" file schema](./#cord-19-closure-mapping)
+* ["Closure" file schema](./#cord-19-mag-closure-graph-mapping)
