@@ -1,12 +1,14 @@
----
-page_type: data
-description: Official MAG/CORD-19 release history
----
+# Official [MAG](https://docs.microsoft.com/en-us/academic-services/graph/)/[CORD-19](https://www.semanticscholar.org/cord19) releases
 
-# Official release history
+* [CORD-19 metadata with more comprehensive MAG ID mapping](#cord-19-metadata-with-more-comprehensive-mag-id-mapping)
+* [CORD UID mapped to MAG ID](#cord-uid-mapped-to-mag-id)
+* [CORD-19 MAG closure graph mapping](#cord-19-mag-closure-graph-mapping)
 
-CORD-19 version | MAG version | # w/MAG | Total # | Coverage | Download
+## Current and past releases
+
+CORD-19 version | MAG version | # w/MAG | Total # | Coverage | Download (ID only<sup>[?](#cord-uid-mapped-to-mag-id)</sup>, Full<sup>[?](#cord-19-metadata-with-more-comprehensive-mag-id-mapping)</sup>, Closure<sup>[?](#cord-19-mag-closure-graph-mapping)</sup>)
 --- | --- | --- | --- | --- | ---
+2020-08-06 | 2020-08-03 | 191835 | 216866 | 88.46% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-08-06-CORD-UID-MappedTo-2020-08-03-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-08-06-CORD-19-MappedTo-2020-08-03-MAG-Backfill.csv), [Closure](https://magcord19.blob.core.windows.net/mapping/2020-08-06-CORD-19-ClosureMappingTo-2020-08-03-MAG.csv)
 2020-08-05 | 2020-07-29 | 189228 | 215508 | 87.81% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-08-05-CORD-UID-MappedTo-2020-07-29-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-08-05-CORD-19-MappedTo-2020-07-29-MAG-Backfill.csv)
 2020-08-04 | 2020-07-29 | 188990 | 214060 | 88.29% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-08-04-CORD-UID-MappedTo-2020-07-29-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-08-04-CORD-19-MappedTo-2020-07-29-MAG-Backfill.csv)
 2020-08-02 | 2020-07-29 | 188909 | 213770 | 88.37% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-08-02-CORD-UID-MappedTo-2020-07-29-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-08-02-CORD-19-MappedTo-2020-07-29-MAG-Backfill.csv), [Closure](https://magcord19.blob.core.windows.net/mapping/2020-08-02-CORD-19-ClosureMappingTo-2020-07-29-MAG.csv)
@@ -47,8 +49,66 @@ CORD-19 version | MAG version | # w/MAG | Total # | Coverage | Download
 2020-06-08 | 2020-05-29 | - | - | 87.98% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-06-08-CORD-UID-MappedTo-2020-05-29-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-06-08-CORD-19-MappedTo-2020-05-29-MAG-Backfill.csv)
 2020-04-17 | 2020-04-17 | - | - | - | [Closure](https://magcord19.blob.core.windows.net/mapping/2020-04-17-CORD-19-ClosureMappingTo-2020-04-17-MAG.csv)
 
-## Schema links
+## CORD-19 metadata with more comprehensive MAG ID mapping
 
-* ["ID only" file schema](./#cord-uid-mapped-to-mag-id)
-* ["Full" file schema](./#cord-19-metadata-with-supplemented-mag-id-mapping)
-* ["Closure" file schema](./#cord-19-mag-closure-graph-mapping)
+* [COVID-19 Open Research Dataset (CORD-19)](https://pages.semanticscholar.org/coronavirus-research)
+
+This file mirrors the official CORD-19 metadata.csv schema and data, with the addition of significantly expanded MAG ID mapping in the "mag_id" column (varying between ~86-88% coverage).
+
+The downloaded file name will contain both the official CORD-19 version (by date) and the official MAG version (by date) that were used to generate the mapping.
+
+### Schema
+
+Column # | Name | Source | Description
+--- | --- | --- | ---
+1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
+2 | sha | CORD-19 | 40-character sha1 of the PDF
+3 | source_x | CORD-19 | Paper source
+4 | title | CORD-19 | Paper title
+5 | doi | CORD-19 | Paper Digital Object Identifier (DOI)
+6 | pmcid | CORD-19 | PubMed Central reference number (PMCID)
+7 | pubmed_id | CORD-19 | PubMed reference number (PMID)
+8 | license | CORD-19 | Fulltext licensing (see [CORD-19 site](https://pages.semanticscholar.org/coronavirus-research))
+9 | abstract | CORD-19 | Paper abstract text
+10 | publish_time | CORD-19 | Paper publication date
+11 | authors | CORD-19 | List of paper author names
+12 | journal | CORD-19 | Paper publication journal
+13 | mag_id | MAG | MAG paper entity ID if available
+14 | who_covidence_id | CORD-19 | Unique paper ID associated with WHO COVID-19 data set
+15 | arxiv_id | CORD-19 | Arxiv ID
+16 | pdf_json_files | CORD-19 | Location of metadata extracted from PDF in JSON format
+17 | pmc_json_files | CORD-19 | Location of metadata extracted from PMC in JSON format
+18 | url | CORD-19 | Paper full-text URL
+19 | s2_id | AI2 | Semantic Scholar paper ID
+
+## CORD UID mapped to MAG ID
+
+* [COVID-19 Open Research Dataset (CORD-19)](https://pages.semanticscholar.org/coronavirus-research)
+
+This file maps the CORD-19 UID (cord_uid) to the corresponding MAG ID.
+
+The downloaded file name will contain both the official CORD-19 version (by date) and the official MAG version (by date) that were used to generate the mapping.
+
+### Schema
+
+Column # | Name | Source | Description
+--- | --- | --- | ---
+1 | cord_uid | CORD-19 | Unique ID for CORD-19 data set
+2 | mag_id | MAG | MAG paper entity ID
+
+## CORD-19 MAG closure graph mapping
+
+* [COVID-19 Open Research Dataset (CORD-19)](https://pages.semanticscholar.org/coronavirus-research)
+
+This file contains Microsoft Academic Graph (MAG) paper IDs derived by iteratively expanding the citations of CORD-19 mapped MAG paper IDs. Each iteration is called a "hop", with hop "0" reflecting the original CORD-19 mapped MAG papers.
+
+The downloaded file name will contain both the official CORD-19 version (by date) and the official MAG version (by date) that were used to generate the closure mappings.
+
+A version of the Project Academic Knowledge (PAK) API is also being released in tangent with the official closure mappings. See the [PAK CORD-19 closure API](../PAK-Samples/cord-19-closure.md) page for more details.
+
+### Schema
+
+Column # | Name | Source | Description
+--- | --- | --- | ---
+1 | mag_id | MAG | MAG paper entity ID
+2 | hops | MAG | The number of iterative citation expansion steps (hops) from the original CORD-19 mapped MAG paper IDs required to include the paper entity ID. The original CORD-19 mapped MAG paper IDs all have a "hops" value of 0
