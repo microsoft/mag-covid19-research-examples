@@ -20,12 +20,7 @@ Completion of Module 1 requires either
 1. Use mapped paper id ([official released CORD-19/MAG paper id mapping](https://github.com/microsoft/mag-covid19-research-examples/blob/master/src/data/releases.md)) to [get CORD-19 MAG Subgraph using PySpark](./Module1-Get-MAG-SubGraph/)
 
 ### Option 2 - Direct access to CORD-19 MAG subgraph
-1. Download the CORD-19 MAG subgraph dataset for hands-on experiments and unzip to data_folder:
-    ```bash
-    wget https://recodatasets.blob.core.windows.net/kdd2020/data_folder.zip
-    unzip data_folder.zip -d data_folder
-    ```
-    After you unzip the file, there are two folders under data_folder, i.e. 'raw' and 'my_cached'.   'raw' folder contains original txt files from the COVID MAG dataset. 'my_cached' folder contains processed data files used for [Module 3](https://github.com/microsoft/recommenders/tree/kdd2020_tutorial/scenarios/academic/KDD2020-tutorial), if you miss some steps during the hands-on tutorial, you can make it up by copying corresponding files into experiment folders.
+1. Please follow the [environment setup instruction](https://github.com/microsoft/recommenders/tree/kdd2020_tutorial/scenarios/academic/KDD2020-tutorial) to download the dataset, if you miss some steps during the hands-on tutorial, you can make it up by copying corresponding files into experiment folders.
  
 1. Acceess CORD-19 papers mapped to MAG via [PAK CORD-19 closure API](https://github.com/microsoft/mag-covid19-research-examples/blob/master/src/PAK-Samples/cord-19-closure.md)
 
