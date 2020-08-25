@@ -1,3 +1,10 @@
+---
+title: CORD-19 MAG Subgraph Analytics (Python)
+description: Using Pandas to generate MAG subgraph analytics
+language: Python
+date: 08/24/2020
+---
+
 # CORD-19 MAG Sub-graph Analysis (Pandas)
 Use PandasMagClass.py to read MAG streams for Pandas:
 1.	Store PandasMagClass.py as same location with notebook, import class by: `from PandasMagClass import MicrosoftAcademicGraph`
