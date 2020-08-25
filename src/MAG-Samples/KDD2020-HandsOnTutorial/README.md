@@ -4,8 +4,21 @@
 This page contains the instruction for Module 1 and 2 in the [KDD 2020 hands-on tutorial: cord19recommender](https://kdd2020tutorial.github.io/cord19recommender/). 
 
 ## Module 1 - Basics of CORD-19 data set and knowledge graph
-* [Get CORD-19 MAG Subgraph using PySpark](./Module1-Get-MAG-SubGraph/)
 
+### Option 1 - Map CORD-19 and MAG 
+1. Get [CORD-19 dataset](https://www.semanticscholar.org/cord19/download) 
+1. link CORD-19 to MAG on paper id: Use [Project Academic Knowledge (PAK) API](https://www.microsoft.com/en-us/research/project/academic-knowledge/) or self-hosted [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-exploration-service/) to [map reference string to MAG paper](https://github.com/microsoft/mag-covid19-research-examples/tree/master/src/PAK-Samples/MapReferenceToPaper)
+1. Use mapped paper id ([official released CORD-19/MAG paper id mapping](https://github.com/microsoft/mag-covid19-research-examples/blob/master/src/data/releases.md)) to [get CORD-19 MAG Subgraph using PySpark](./Module1-Get-MAG-SubGraph/)
+
+### Option 2 - Direct access to CORD-19 MAG subgraph
+1. Download the CORD-19 MAG subgraph dataset for hands-on experiments and unzip to data_folder:
+    ```bash
+    wget https://recodatasets.blob.core.windows.net/kdd2020/data_folder.zip
+    unzip data_folder.zip -d data_folder
+    ```
+    After you unzip the file, there are two folders under data_folder, i.e. 'raw' and 'my_cached'.   'raw' folder contains original txt files from the COVID MAG dataset. 'my_cached' folder contains processed data files used for [Module 3](https://github.com/microsoft/recommenders/tree/kdd2020_tutorial/scenarios/academic/KDD2020-tutorial), if you miss some steps during the hands-on tutorial, you can make it up by copying corresponding files into experiment folders.
+ 
+1. Acceess CORD-19 papers mapped to MAG via [PAK CORD-19 closure API](https://github.com/microsoft/mag-covid19-research-examples/blob/master/src/PAK-Samples/cord-19-closure.md)
 
 ## Module 2 - Understanding contents with the aid of knowledge graph
 
