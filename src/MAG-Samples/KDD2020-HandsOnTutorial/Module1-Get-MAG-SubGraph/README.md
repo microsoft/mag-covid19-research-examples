@@ -3,7 +3,7 @@ title: MAG subgraph generation (PySpark)
 description: Using Azure Databricks PySpark to generate MAG subgraph by full MAG data
 language: Python
 products: Azure
-date: 08/10/2020
+date: 08/24/2020
 ---
 # MAG Subgraph Generation (PySpark)
 
