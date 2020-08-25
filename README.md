@@ -63,6 +63,7 @@ or [MAKES API](https://docs.microsoft.com/en-us/academic-services/knowledge-expl
 
 - [Network Similarity package](./src/MAG-Samples/NetworkSimilaritySample/readme.md)
 - [COVID-19 impact on Computer Science and related conferences](./src/MAG-Samples/impact-of-covid19-on-the-computer-science-research-community/readme.md) - [(Blog post)](https://www.microsoft.com/en-us/research/project/academic/articles/impact-of-covid-19-on-computer-science-research-community)
+- [In Search For A Cure: Recommendation with Knowledge Graph on CORD-19](./src/MAG-Samples/KDD2020-HandsOnTutorial/README.md) - [(KDD 2020 Hands-on Tutorial Website)](https://kdd2020tutorial.github.io/cord19recommender/)
 
 
 ## MAKES / Project Academic Knowledge (PAK) API samples
