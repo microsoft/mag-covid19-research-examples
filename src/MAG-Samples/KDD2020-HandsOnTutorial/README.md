@@ -1,3 +1,9 @@
+---
+title: In Search For A Cure - Recommendation with Knowledge Graph on CORD-19
+description: Generate an academic knowledge graph from CORD-19 dataset and Microsoft Academic Graph (MAG) & perform analytics on it
+language: Python
+date: 08/24/2020
+---
 
 # In Search For A Cure: Recommendation with Knowledge Graph on CORD-19  -- KDD 2020 hands-on tutorial
 
