@@ -1,20 +1,22 @@
 ## KDD 2020 hands-on tutorial
 # In Search For A Cure: Recommendation with Knowledge Graph on CORD-19
 
-This page contains the instruction for Module I and II in the [KDD 2020 hands-on tutorial: cord19recommender](https://kdd2020tutorial.github.io/cord19recommender/). 
+This page contains the instruction for Module 1 and 2 in the [KDD 2020 hands-on tutorial: cord19recommender](https://kdd2020tutorial.github.io/cord19recommender/). 
 
-## Prerequisites
-* [Set up provisioning of Microsoft Academic Graph to an Azure blob storage account](https://docs.microsoft.com/en-us/academic-services/graph/get-started-setup-provisioning?branch=index-build-commands-launch)
-* [Set up Azure Data Lake Analytics for Microsoft Academic Graph](https://docs.microsoft.com/en-us/academic-services/graph/get-started-setup-azure-data-lake-analytics?branch=index-build-commands-launch)
+## Module 1 - Basics of CORD-19 data set and knowledge graph
+* [Get CORD-19 MAG Subgraph using PySpark](./Module1-Get-MAG-SubGraph/README.md)
 
-## Gather the information that you need
 
-Before you begin, you should have these items of information:
+## Module 2 - Understanding contents with the aid of knowledge graph
 
-  :heavy_check_mark:  The name of your Azure Storage (AS) account containing MAG dataset from [Get Microsoft Academic Graph on Azure storage](get-started-setup-provisioning.md#note-azure-storage-account-name-and-primary-key).
+### MAG Analysis Examples (Pandas)
+Use PandasMagClass.py to read MAG streams for Pandas:
+1.	Store PandasMagClass.py as same location with notebook, import class by: `from PandasMagClass import MicrosoftAcademicGraph`
+2.	Set root folder: `root = './data/'`
+3.	Create new instance with root: `mag = MicrosoftAcademicGraph(root)`
+4.	Get Dataframe by:
+`df_papers = mag.get_data_frame('Papers')`
+`df_paper_author_affiliations = mag.get_data_frame('PaperAuthorAffiliations')`
 
-   :heavy_check_mark:  The name of your Azure Data Lake Analytics (ADLA) service from [Set up Azure Data Lake Analytics](get-started-setup-azure-data-lake-analytics.md#create-azure-data-lake-analytics-account).
-
-   :heavy_check_mark:  The name of your Azure Data Lake Storage (ADLS) from [Set up Azure Data Lake Analytics](get-started-setup-azure-data-lake-analytics.md#create-azure-data-lake-analytics-account).
-
-   :heavy_check_mark:  The name of the container in your Azure Storage (AS) account containing MAG dataset.
+### Resources
+* [AffiliationRegions.txt](https://github.com/microsoft/mag-covid19-research-examples/blob/master/src/MAG-Samples/impact-of-covid19-on-the-computer-science-research-community/AffiliationRegions.txt)
