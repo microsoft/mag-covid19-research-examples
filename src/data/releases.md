@@ -8,6 +8,7 @@
 
 CORD-19 version | MAG version | # w/MAG | Total # | Coverage | Download (ID only<sup>[?](#cord-uid-mapped-to-mag-id)</sup>, Full<sup>[?](#cord-19-metadata-with-more-comprehensive-mag-id-mapping)</sup>, Closure<sup>[?](#cord-19-mag-closure-graph-mapping)</sup>)
 --- | --- | --- | --- | --- | ---
+2020-09-27 | 2020-09-21 | 256899 | 294920 | 87.11% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-09-27-CORD-UID-MappedTo-2020-09-21-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-09-27-CORD-19-MappedTo-2020-09-21-MAG-Backfill.csv)
 2020-09-23 | 2020-09-14 | 250088 | 288196 | 86.78% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-09-23-CORD-UID-MappedTo-2020-09-14-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-09-23-CORD-19-MappedTo-2020-09-14-MAG-Backfill.csv)
 2020-09-22 | 2020-09-14 | 249170 | 286664 | 86.92% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-09-22-CORD-UID-MappedTo-2020-09-14-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-09-22-CORD-19-MappedTo-2020-09-14-MAG-Backfill.csv)
 2020-09-21 | 2020-09-14 | 249000 | 286054 | 87.05% | [ID only](https://magcord19.blob.core.windows.net/mapping/2020-09-21-CORD-UID-MappedTo-2020-09-14-MAG-ID.csv), [Full](https://magcord19.blob.core.windows.net/mapping/2020-09-21-CORD-19-MappedTo-2020-09-14-MAG-Backfill.csv)
