@@ -13,9 +13,9 @@
 DECLARE @blobAccount   string = "<AzureStorageAccount>";
 DECLARE @blobContainer string = "<MagContainer>"; // mag-yyyy-mm-dd
 DECLARE @uriPrefix   string = "wasb://" + @blobContainer + "@" + @blobAccount + "/";
-DECLARE @resourcePathFosCopaper string = "ns/FosCopaper.txt"; // Network similarity resouce path for FosCopaper.
-DECLARE @resourcePathFosCovenue string = "ns/FosCovenue.txt"; // Network similarity resouce path for FosCovenue.
-DECLARE @resourcePathFosMetapath string = "ns/FosMetapath.txt"; // Network similarity resouce path for FosMetapath.
+DECLARE @resourcePathFosCopaper string = "ns/FosCopaper.txt"; // Network similarity resource path for FosCopaper.
+DECLARE @resourcePathFosCovenue string = "ns/FosCovenue.txt"; // Network similarity resource path for FosCovenue.
+DECLARE @resourcePathFosMetapath string = "ns/FosMetapath.txt"; // Network similarity resource path for FosMetapath.
 DECLARE @entityId1 long = 3008058167; // Entity id of Coronavirus disease 2019 (COVID-19)
 DECLARE @entityId2 long = 3007834351; // Entity id of Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)
 
